@@ -338,3 +338,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/package_create/lib/net472/Diga.NativeControls.WebBrowser.dll
+/package_create/lib/netcoreapp3.1/Diga.NativeControls.WebBrowser.dll

@@ -20,4 +20,8 @@
     <PackageReference Include="MimeTypeExtension" Version="1.0.1" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy $(TargetPath) $(SolutionDir)\package_create\lib\netcoreapp3.1\*" />
+  </Target>
+
 </Project>

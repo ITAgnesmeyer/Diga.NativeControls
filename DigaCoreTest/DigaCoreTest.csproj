@@ -7,10 +7,9 @@
 
   <ItemGroup>
     <PackageReference Include="CoreWindowsWrapper" Version="1.0.41" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Diga.NativeControls.WebBrowser.Core\Diga.NativeControls.WebBrowser.Core.csproj" />
+    <PackageReference Include="Diga.NativeControls.WebBrowser" Version="1.0.0" />
+    <PackageReference Include="Diga.WebView2.Interop" Version="2.0.4" />
+    <PackageReference Include="Diga.WebView2.Wrapper" Version="2.0.4" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">

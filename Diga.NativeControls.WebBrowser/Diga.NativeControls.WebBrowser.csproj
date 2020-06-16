@@ -78,4 +78,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Diga.WebView2.Wrapper.2.0.4\build\Diga.WebView2.Wrapper.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Diga.WebView2.Wrapper.2.0.4\build\Diga.WebView2.Wrapper.targets'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\package_create\lib\net472\*</PostBuildEvent>
+  </PropertyGroup>
 </Project>
