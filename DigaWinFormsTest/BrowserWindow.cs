@@ -3,7 +3,7 @@ using CoreWindowsWrapper;
 using Diga.NativeControls.WebBrowser;
 using Diga.WebView2.Wrapper.EventArguments;
 
-namespace ConsoleCaller
+namespace DigaWinFormsTest
 {
     class BrowserWindow : NativeWindow
     {
