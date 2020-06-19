@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diga.NativeControls.WebBrow
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diga.NativeControls.WebBrowser", "Diga.NativeControls.WebBrowser\Diga.NativeControls.WebBrowser.csproj", "{98B7E068-93E6-4291-B45D-6F6940A21258}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowseForFileAndFolder", "BrowseForFileAndFolder\BrowseForFileAndFolder.csproj", "{74EA2D69-AF51-4BC9-A531-335219379E2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{98B7E068-93E6-4291-B45D-6F6940A21258}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98B7E068-93E6-4291-B45D-6F6940A21258}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98B7E068-93E6-4291-B45D-6F6940A21258}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74EA2D69-AF51-4BC9-A531-335219379E2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74EA2D69-AF51-4BC9-A531-335219379E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74EA2D69-AF51-4BC9-A531-335219379E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74EA2D69-AF51-4BC9-A531-335219379E2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
