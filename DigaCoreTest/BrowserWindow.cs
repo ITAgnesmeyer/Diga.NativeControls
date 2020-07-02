@@ -14,8 +14,8 @@ namespace ConsoleCaller
             this.Name = "BrowserWindow";
             this.StatusBar = true;
             this.IconFile = "Browser.ico";
-            this.Width = 800;
-            this.Height = 600;
+            this.Width = 250;
+            this.Height = 100;
             this.StartUpPosition = WindowsStartupPosition.CenterScreen;
           
             
@@ -29,7 +29,9 @@ namespace ConsoleCaller
                 DevToolsEnabled = false,
                 EnableMonitoring = true,
                 MonitoringFolder = ".\\wwwroot",
-                MonitoringUrl = "http://localhost:1/"
+                MonitoringUrl = "http://localhost:1/",
+                AutoDock = true
+
             };
             this._Browser.DocumentTitleChanged += OnDocumentTitleChanged;
             this._Browser.NavigationStart += OnNavigationStart;
@@ -59,16 +61,16 @@ namespace ConsoleCaller
         {
             this.Text = this._Browser.DocumentTitle;
         }
-        
-        protected override void OnSize(SizeEventArgs e)
-        {
-            if (e.Width == 0) return;
-            base.OnSize(e);
-            this._Browser.Left = e.X;
-            this._Browser.Top = e.Y;
-            this._Browser.Width = e.Width;
-            this._Browser.Height = e.Height;
-            this._Browser.DoDock();
-        }
+
+        //protected override void OnSize(SizeEventArgs e)
+        //{
+        //    if (e.Width == 0) return;
+        //    base.OnSize(e);
+        //    this._Browser.Left = e.X;
+        //    this._Browser.Top = e.Y;
+        //    this._Browser.Width = e.Width;
+        //    this._Browser.Height = e.Height;
+        //    this._Browser.DoDock();
+        //}
     }
 }

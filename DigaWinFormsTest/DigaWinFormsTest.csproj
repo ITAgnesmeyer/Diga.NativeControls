@@ -36,13 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CoreWindowsWrapper, Version=1.0.4.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreWindowsWrapper.1.0.43\lib\net472\CoreWindowsWrapper.dll</HintPath>
+      <HintPath>..\packages\CoreWindowsWrapper.1.0.44\lib\net472\CoreWindowsWrapper.dll</HintPath>
     </Reference>
     <Reference Include="Diga.Core.Api.Win32, Version=1.0.19.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Diga.Core.Api.Win32.1.0.20\lib\net472\Diga.Core.Api.Win32.dll</HintPath>
-    </Reference>
-    <Reference Include="Diga.NativeControls.WebBrowser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Diga.NativeControls.WebBrowser.1.0.0\lib\net472\Diga.NativeControls.WebBrowser.dll</HintPath>
     </Reference>
     <Reference Include="Diga.WebView2.Interop.V9430, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Diga.WebView2.Interop.2.0.4\lib\net472\Diga.WebView2.Interop.V9430.dll</HintPath>
@@ -94,6 +91,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Diga.NativeControls.WebBrowser\Diga.NativeControls.WebBrowser.csproj">
+      <Project>{98b7e068-93e6-4291-b45d-6f6940a21258}</Project>
+      <Name>Diga.NativeControls.WebBrowser</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Diga.WebView2.Wrapper.2.0.4\build\Diga.WebView2.Wrapper.targets" Condition="Exists('..\packages\Diga.WebView2.Wrapper.2.0.4\build\Diga.WebView2.Wrapper.targets')" />

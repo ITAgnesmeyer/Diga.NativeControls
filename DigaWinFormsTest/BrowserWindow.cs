@@ -29,7 +29,8 @@ namespace DigaWinFormsTest
                 DevToolsEnabled = false,
                 EnableMonitoring = true,
                 MonitoringFolder = ".\\wwwroot",
-                MonitoringUrl = "http://localhost:1/"
+                MonitoringUrl = "http://localhost:1/",
+                AutoDock = true
             };
             this._Browser.DocumentTitleChanged += OnDocumentTitleChanged;
             this._Browser.NavigationStart += OnNavigationStart;
@@ -59,11 +60,12 @@ namespace DigaWinFormsTest
         {
             this.Text = this._Browser.DocumentTitle;
         }
-        
+
         protected override void OnSize(SizeEventArgs e)
         {
             if (e.Width == 0) return;
             base.OnSize(e);
+
             this._Browser.Left = e.X;
             this._Browser.Top = e.Y;
             this._Browser.Width = e.Width;
