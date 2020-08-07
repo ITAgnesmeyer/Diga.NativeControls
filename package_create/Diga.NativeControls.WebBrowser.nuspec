@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Diga.NativeControls.WebBrowser</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <authors>Dipl.-Ing.(FH) Guido Agnesmeyer</authors>
     <owners></owners>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
@@ -13,15 +13,15 @@
     <tags>net-core, WebView2, CoreWindowsWrapper</tags>
     <dependencies>
       <group targetFramework=".NETCoreApp3.1">
-        <dependency id="CoreWindowsWrapper" version="1.0.45" exclude="Build,Analyzers" />
-        <dependency id="Diga.WebView2.Wrapper" version="3.0.1" exclude="Build,Analyzers" />
+        <dependency id="CoreWindowsWrapper" version="1.0.46" exclude="Build,Analyzers" />
+        <dependency id="Diga.WebView2.Wrapper" version="4.0.1" exclude="Build,Analyzers" />
         <dependency id="MimeTypeExtension" version="1.0.1" exclude="Build,Analyzers" />
       </group>
       <group targetFramework=".NETFramework4.7.2">
-        <dependency id="CoreWindowsWrapper" version="1.0.45" />
-        <dependency id="Diga.Core.Api.Win32" version="1.0.21" />
-        <dependency id="Diga.WebView2.Interop" version="3.0.1" />
-        <dependency id="Diga.WebView2.Wrapper" version="3.0.1" />
+        <dependency id="CoreWindowsWrapper" version="1.0.46" />
+        <dependency id="Diga.Core.Api.Win32" version="1.0.23" />
+        <dependency id="Diga.WebView2.Interop" version="4.0.1" />
+        <dependency id="Diga.WebView2.Wrapper" version="4.0.1" />
         <dependency id="MimeTypeExtension" version="1.0.1" />
       </group>
     </dependencies>
