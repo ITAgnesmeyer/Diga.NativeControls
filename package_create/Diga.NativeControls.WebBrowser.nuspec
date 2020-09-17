@@ -2,32 +2,35 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Diga.NativeControls.WebBrowser</id>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
+    <title>Diga.NativeControls.WebBrowser</title>
     <authors>Dipl.-Ing.(FH) Guido Agnesmeyer</authors>
-    <owners></owners>
+    <owners>Dipl.-Ing.(FH) Guido Agnesmeyer</owners>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <license type="expression">MIT</license>
+    <icon>logo.png</icon>
     <description>Diga.NativeControls.WebBrowser.Core</description>
     <releaseNotes>WebBrowserControl build with WebView2 and CoreWindowsWrapper</releaseNotes>
     <copyright>Copyright © 2020 Dipl.-Ing.(FH) Guido Agnesmeyer</copyright>
-    <tags>net-core, WebView2, CoreWindowsWrapper</tags>
+    <tags>net-core, WebView2, CoreWindowsWrapper, WebView</tags>
     <dependencies>
       <group targetFramework=".NETCoreApp3.1">
         <dependency id="CoreWindowsWrapper" version="1.0.46" exclude="Build,Analyzers" />
-        <dependency id="Diga.WebView2.Wrapper" version="4.0.2" exclude="Build,Analyzers" />
+        <dependency id="Diga.WebView2.Wrapper" version="5.0.2" exclude="Build,Analyzers" />
         <dependency id="MimeTypeExtension" version="1.0.1" exclude="Build,Analyzers" />
       </group>
       <group targetFramework=".NETFramework4.7.2">
         <dependency id="CoreWindowsWrapper" version="1.0.46" />
         <dependency id="Diga.Core.Api.Win32" version="1.0.23" />
-        <dependency id="Diga.WebView2.Interop" version="4.0.1" />
-        <dependency id="Diga.WebView2.Wrapper" version="4.0.2" />
-        <dependency id="MimeTypeExtension" version="1.0.1" />
+        <dependency id="Diga.WebView2.Interop" version="5.0.1" />
+        <dependency id="Diga.WebView2.Wrapper" version="5.0.2" />
+        <dependency id="MimeTypeExtension" version="1.0.2" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="lib\netcoreapp3.1\Diga.NativeControls.WebBrowser.dll" target="lib\netcoreapp3.1\Diga.NativeControls.WebBrowser.dll" />
     <file src="lib\net472\Diga.NativeControls.WebBrowser.dll" target="lib\net472\Diga.NativeControls.WebBrowser.dll" />
+    <file src="lib\netcoreapp3.1\Diga.NativeControls.WebBrowser.dll" target="lib\netcoreapp3.1\Diga.NativeControls.WebBrowser.dll" />
+    <file src="logo.png" target="logo.png" />
   </files>
 </package>

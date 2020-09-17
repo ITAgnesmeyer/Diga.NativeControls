@@ -37,8 +37,15 @@ namespace ConsoleCaller
             this._Browser.NavigationStart += OnNavigationStart;
             this._Browser.NavigationCompleted += OnNaviationCompleted;
             this._Browser.WebResourceRequested += OnWebResourceRequested;
+            this._Browser.WebMessageReceived += OnWebMessageReceived;
             this.Controls.Add(this._Browser);
         }
+
+        private void OnWebMessageReceived(object? sender, WebMessageReceivedEventArgs e)
+        {
+            
+        }
+
         private void OnWebResourceRequested(object sender, WebResourceRequestedEventArgs e)
         {
             Debug.Print(e.Request.Uri);
