@@ -14,8 +14,8 @@ namespace ConsoleCaller
             this.Name = "BrowserWindow";
             this.StatusBar = true;
             this.IconFile = "Browser.ico";
-            this.Width = 250;
-            this.Height = 100;
+            this.Width = 800;
+            this.Height = 600;
             this.StartUpPosition = WindowsStartupPosition.CenterScreen;
           
             

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Diga.NativeControls.WebBrowser</id>
-    <version>1.0.5</version>
+    <version>1.0.7</version>
     <title>Diga.NativeControls.WebBrowser</title>
     <authors>Dipl.-Ing.(FH) Guido Agnesmeyer</authors>
     <owners>Dipl.-Ing.(FH) Guido Agnesmeyer</owners>
@@ -16,15 +16,15 @@
     <dependencies>
       <group targetFramework=".NETCoreApp3.1">
         <dependency id="CoreWindowsWrapper" version="1.0.46" exclude="Build,Analyzers" />
-        <dependency id="Diga.WebView2.Wrapper" version="5.0.2" exclude="Build,Analyzers" />
-        <dependency id="MimeTypeExtension" version="1.0.1" exclude="Build,Analyzers" />
+        <dependency id="Diga.WebView2.Wrapper" version="7.0.1" exclude="Analyzers" />
+        <dependency id="MimeTypeExtension" version="1.0.23" exclude="Build,Analyzers" />
       </group>
       <group targetFramework=".NETFramework4.7.2">
         <dependency id="CoreWindowsWrapper" version="1.0.46" />
         <dependency id="Diga.Core.Api.Win32" version="1.0.23" />
-        <dependency id="Diga.WebView2.Interop" version="5.0.1" />
-        <dependency id="Diga.WebView2.Wrapper" version="5.0.2" />
-        <dependency id="MimeTypeExtension" version="1.0.2" />
+        <dependency id="Diga.WebView2.Interop" version="7.0.1" />
+        <dependency id="Diga.WebView2.Wrapper" version="7.0.1" />
+        <dependency id="MimeTypeExtension" version="1.0.23" />
       </group>
     </dependencies>
   </metadata>
