@@ -41,7 +41,7 @@ namespace ConsoleCaller
             this.Controls.Add(this._Browser);
         }
 
-        private void OnWebMessageReceived(object? sender, WebMessageReceivedEventArgs e)
+        private void OnWebMessageReceived(object sender, WebMessageReceivedEventArgs e)
         {
             
         }
