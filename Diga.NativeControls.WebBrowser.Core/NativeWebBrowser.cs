@@ -571,8 +571,8 @@ namespace Diga.NativeControls.WebBrowser
             if (!fileInfo.Exists)
             {
                 responseInfo = new ResponseInfo("<h1>Server Error</h1><h5>file not found:" + file + "</h5>");
-                responseInfo.Header.Add("content-type", "text/html");
-                responseInfo.ContentType = "content-type: text/html";
+                responseInfo.Header.Add("content-type", "text/html; charset=utf-8");
+                responseInfo.ContentType = "content-type: text/html; charset=utf-8";
                 responseInfo.StatusCode = 404;
                 responseInfo.StatusText = "Not Found";
 
@@ -586,8 +586,11 @@ namespace Diga.NativeControls.WebBrowser
             {
                 byte[] bytes = File.ReadAllBytes(file);
                 responseInfo = new ResponseInfo(bytes);
-                responseInfo.Header.Add("content-type", contentType);
-                responseInfo.ContentType = "content-type: " + contentType;
+                string utf8Extension = GetUtf8IfNeeded(contentType);
+
+                responseInfo.Header.Add("content-type", contentType + utf8Extension);
+
+                responseInfo.ContentType = "content-type: " + contentType + utf8Extension;
                 responseInfo.StatusCode = 200;
                 responseInfo.StatusText = "OK";
                 return true;
@@ -596,8 +599,8 @@ namespace Diga.NativeControls.WebBrowser
             {
                 string message = "Error:" + e.Message;
                 responseInfo = new ResponseInfo(message);
-                responseInfo.Header.Add("content-type", "text/html");
-                responseInfo.ContentType = "content-type: text/html";
+                responseInfo.Header.Add("content-type", "text/html; charset=utf-8");
+                responseInfo.ContentType = "content-type; charset=utf-8";
                 responseInfo.StatusCode = 500;
                 responseInfo.StatusText = "Internal Server Error";
                 return true;
@@ -605,6 +608,30 @@ namespace Diga.NativeControls.WebBrowser
 
 
         }
+
+        private string GetUtf8IfNeeded(string contentType)
+        {
+            if (string.IsNullOrEmpty(contentType))
+                return "";
+
+            bool needUtf8 = false;
+
+            switch (contentType)
+            {
+                case "application/x-javascript":
+                case "text/html":
+                case "text/css":
+                case "application/javascript":
+                case "application/json":
+                    needUtf8 = true;
+                    break;
+            }
+
+            if (needUtf8)
+                return "; charset=utf-8";
+            return "";
+        }
+
         protected virtual void OnAcceleratorKeyPressed(AcceleratorKeyPressedEventArgs e)
         {
             AcceleratorKeyPressed?.Invoke(this, e);
