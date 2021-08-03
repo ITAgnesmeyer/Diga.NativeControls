@@ -7,9 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigaCoreTest", "DigaCoreTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigaWinFormsTest", "DigaWinFormsTest\DigaWinFormsTest.csproj", "{FD503648-6928-4AC9-8CD5-B9F83899AD03}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diga.NativeControls.WebBrowser.Core", "Diga.NativeControls.WebBrowser.Core\Diga.NativeControls.WebBrowser.Core.csproj", "{1DF3378F-8286-4C29-974B-0DEB58958368}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diga.NativeControls.WebBrowser", "Diga.NativeControls.WebBrowser\Diga.NativeControls.WebBrowser.csproj", "{98B7E068-93E6-4291-B45D-6F6940A21258}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diga.NativeControls.WebBrowser", "Diga.NativeControls.WebBrowser.Core\Diga.NativeControls.WebBrowser.csproj", "{1DF3378F-8286-4C29-974B-0DEB58958368}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowseForFileAndFolder", "BrowseForFileAndFolder\BrowseForFileAndFolder.csproj", "{74EA2D69-AF51-4BC9-A531-335219379E2A}"
 EndProject
@@ -31,10 +29,6 @@ Global
 		{1DF3378F-8286-4C29-974B-0DEB58958368}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DF3378F-8286-4C29-974B-0DEB58958368}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DF3378F-8286-4C29-974B-0DEB58958368}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98B7E068-93E6-4291-B45D-6F6940A21258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98B7E068-93E6-4291-B45D-6F6940A21258}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98B7E068-93E6-4291-B45D-6F6940A21258}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98B7E068-93E6-4291-B45D-6F6940A21258}.Release|Any CPU.Build.0 = Release|Any CPU
 		{74EA2D69-AF51-4BC9-A531-335219379E2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{74EA2D69-AF51-4BC9-A531-335219379E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74EA2D69-AF51-4BC9-A531-335219379E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU

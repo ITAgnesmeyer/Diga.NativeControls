@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Diga.NativeControls.WebBrowser.Core\Diga.NativeControls.WebBrowser.Core.csproj" />
+    <ProjectReference Include="..\Diga.NativeControls.WebBrowser.Core\Diga.NativeControls.WebBrowser.csproj" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
