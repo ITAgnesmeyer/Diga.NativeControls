@@ -33,11 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CoreWindowsWrapper, Version=1.0.4.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreWindowsWrapper.1.0.47\lib\net472\CoreWindowsWrapper.dll</HintPath>
+    <Reference Include="CoreWindowsWrapper, Version=2.0.1.0, Culture=neutral, PublicKeyToken=e492a3b3f6b0a798, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreWindowsWrapper.2.0.1-preview\lib\net472\CoreWindowsWrapper.dll</HintPath>
     </Reference>
-    <Reference Include="Diga.Core.Api.Win32, Version=1.0.26.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Diga.Core.Api.Win32.1.0.26\lib\net472\Diga.Core.Api.Win32.dll</HintPath>
+    <Reference Include="Diga.Core.Api.Win32, Version=2.0.1.0, Culture=neutral, PublicKeyToken=195159b462588500, processorArchitecture=MSIL">
+      <HintPath>..\packages\Diga.Core.Api.Win32.2.0.1\lib\net472\Diga.Core.Api.Win32.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

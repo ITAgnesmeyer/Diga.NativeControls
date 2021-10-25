@@ -47,6 +47,8 @@ namespace Diga.NativeControls.WebBrowser
         public event EventHandler<WebMessageReceivedEventArgs> WebMessageReceived;
         public event EventHandler<AddScriptToExecuteOnDocumentCreatedCompletedEventArgs>
             ScriptToExecuteOnDocumentCreatedCompleted;
+
+        public event EventHandler<DownloadStartingEventArgs> DownloadStarting; 
         public event EventHandler WebViewCreated;
         public bool AutoDock { get; set; } = false;
         public string BrowserExecutableFolder { get; set; } = "";
@@ -113,6 +115,8 @@ namespace Diga.NativeControls.WebBrowser
                 this._WebViewControl.WebMessageReceived += OnWebMessageReceivedIntern;
                 this._WebViewControl.WebResourceRequested += OnWebResourceRequestedIntern;
                 this._WebViewControl.ZoomFactorChanged += OnZoomFactorChangedIntern;
+                this._WebViewControl.DownloadStarting += OnDownloadStartingIntern;
+                
             }
             else
             {
@@ -121,6 +125,11 @@ namespace Diga.NativeControls.WebBrowser
 
             return created;
 
+        }
+
+        private void OnDownloadStartingIntern(object sender, DownloadStartingEventArgs e)
+        {
+            OnDownloadStarting(e);
         }
 
         private void OnZoomFactorChangedIntern(object sender, WebView2EventArgs e)
@@ -729,6 +738,11 @@ namespace Diga.NativeControls.WebBrowser
         private void OnParentSize(object sender, SizeEventArgs e)
         {
             this.DoDock();
+        }
+
+        protected virtual void OnDownloadStarting(DownloadStartingEventArgs e)
+        {
+            DownloadStarting?.Invoke(this, e);
         }
     }
 }
