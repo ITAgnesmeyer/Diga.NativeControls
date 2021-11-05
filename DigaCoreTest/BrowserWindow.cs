@@ -62,7 +62,7 @@ namespace ConsoleCaller
         private void OnNavigationStart(object sender, NavigationStartingEventArgs e)
         {
             
-            this.Text = "Start-Navigate" + e.Uri;
+            this.Text = "Start-Navigate" + e.uri;
         }
         private void OnDocumentTitleChanged(object sender, WebView2EventArgs e)
         {
