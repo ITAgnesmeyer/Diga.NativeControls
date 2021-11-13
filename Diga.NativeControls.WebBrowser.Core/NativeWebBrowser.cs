@@ -4,7 +4,7 @@ using System.IO;
 using CoreWindowsWrapper;
 using Diga.Core.Api.Win32;
 using Diga.WebView2.Interop;
-using Diga.WebView2.WinForms;
+
 using Diga.WebView2.Wrapper;
 using Diga.WebView2.Wrapper.EventArguments;
 using Diga.WebView2.Wrapper.Types;
@@ -244,12 +244,12 @@ namespace Diga.NativeControls.WebBrowser
 
         private void OnWebWindowBeforeCreate(object sender, BeforeCreateEventArgs e)
         {
-            e.Settings.AreDefaultContextMenusEnabled = new CBOOL(this._DefaultContextMenusEnabled);
-            e.Settings.AreDefaultScriptDialogsEnabled = new CBOOL(this._DefaultScriptDialogsEnabled);
-            e.Settings.AreDevToolsEnabled = new CBOOL(this._DevToolsEnabled);
-            e.Settings.IsScriptEnabled = new CBOOL(this._IsScriptEnabled);
-            e.Settings.IsStatusBarEnabled = new CBOOL(this._IsStatusBarEnabled);
-            e.Settings.IsWebMessageEnabled = new CBOOL(this._IsWebMessageEnabled);
+            e.Settings.AreDefaultContextMenusEnabled = this._DefaultContextMenusEnabled;
+            e.Settings.AreDefaultScriptDialogsEnabled = this._DefaultScriptDialogsEnabled;
+            e.Settings.AreDevToolsEnabled = this._DevToolsEnabled;
+            e.Settings.IsScriptEnabled = this._IsScriptEnabled;
+            e.Settings.IsStatusBarEnabled = this._IsStatusBarEnabled;
+            e.Settings.IsWebMessageEnabled = this._IsWebMessageEnabled;
         }
 
         public void DoDock()
