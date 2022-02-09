@@ -6,17 +6,17 @@
     <PackageId>Diga.NativeControls.WebBrowser</PackageId>
     <Authors>Dipl.-Ing.(FH) Guido Agnesmeyer</Authors>
     <Description>Diga.NativeControls.WebBrowser.Core</Description>
-    <Copyright>Copyright © 2021 Dipl.-Ing.(FH) Guido Agnesmeyer</Copyright>
+    <Copyright>Copyright © 2022 Dipl.-Ing.(FH) Guido Agnesmeyer</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>net-core;WebView2;CoreWindowsWrapper</PackageTags>
     <PackageReleaseNotes>WebBrowserControl build with WebView2 and CoreWindowsWrapper</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <AssemblyName>Diga.NativeControls.WebBrowser</AssemblyName>
-    <AssemblyVersion>1.0.14</AssemblyVersion>
-    <FileVersion>1.0.14</FileVersion>
+    <AssemblyVersion>1.0.20</AssemblyVersion>
+    <FileVersion>1.0.20</FileVersion>
     <PackageProjectUrl>https://github.com/ITAgnesmeyer/WebAssemblyViewer</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ITAgnesmeyer/Diga.NativeControls</RepositoryUrl>
-    <version>1.0.14</version>
+    <version>1.0.20</version>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
@@ -25,8 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CoreWindowsWrapper" Version="2.0.1-preview" />
-    <PackageReference Include="Diga.WebView2.Wrapper" Version="14.0.1" />
+    <PackageReference Include="CoreWindowsWrapper" Version="2.0.2" />
+    <PackageReference Include="Diga.Core.Api.Win32" Version="2.0.4" />
+    <PackageReference Include="Diga.Core.Json" Version="1.0.2" />
+    <PackageReference Include="Diga.Core.Threading" Version="1.0.3" />
+    <PackageReference Include="Diga.WebView2.Wrapper" Version="15.0.4" />
     <PackageReference Include="MimeTypeExtension" Version="1.0.28" />
   </ItemGroup>
 

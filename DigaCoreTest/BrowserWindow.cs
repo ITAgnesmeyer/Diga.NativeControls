@@ -20,8 +20,8 @@ namespace ConsoleCaller
             this.Width = 800;
             this.Height = 600;
             this.StartUpPosition = WindowsStartupPosition.CenterScreen;
-            
-            
+
+
             this._Browser = new NativeWebBrowser()
             {
                 Width = this.Width,
@@ -43,7 +43,7 @@ namespace ConsoleCaller
             this._Browser.WebMessageReceived += OnWebMessageReceived;
             this._Browser.AcceleratorKeyPressed += OnWebBrowserAcceleratorKeyPressed;
 
-          
+
             this.Controls.Add(this._Browser);
         }
 
@@ -51,29 +51,45 @@ namespace ConsoleCaller
         private uint LastExStyle = 0;
         private void OnWebBrowserAcceleratorKeyPressed(object sender, AcceleratorKeyPressedEventArgs e)
         {
+            
             if (e.VirtualKey == 122 && e.KeyVentType == KeyEventType.KeyDown)
             {
                 IntPtr style = User32.GetWindowLongPtr(this.Handle, GWL.GWL_STYLE);
                 IntPtr exStyle = User32.GetWindowLongPtr(this.Handle, GWL.GWL_EXSTYLE);
-                this.LastStype = unchecked((uint)style.ToInt64());
-                this.LastExStyle = unchecked((uint)exStyle.ToInt64());
-                uint currentStyle = this.LastStype;
-                uint currentExStyle = this.LastExStyle;
-                currentExStyle &= WindowStylesConst.WS_EX_CLIENTEDGE;
-                currentStyle &= ~(WindowStylesConst.WS_BORDER   | WindowStylesConst.WS_SIZEBOX   |
-                                    WindowStylesConst.WS_SIZEBOX  );
-                currentStyle |= WindowStylesConst.WS_POPUP;
-                IntPtr p = new IntPtr(currentStyle);
-                IntPtr pp = new IntPtr(currentExStyle);
-                User32.SetWindowLongPtr(this.Handle, GWL.GWL_STYLE, p);
-                //User32.SetWindowLongPtr(this.Handle, GWL.GWL_EXSTYLE, pp);
-                User32.SetWindowPos(this.Handle, IntPtr.Zero, 0, 0, 0, 0,
-                    (uint)DeferWindowPosCommands.SWP_FRAMECHANGED | (uint)DeferWindowPosCommands.SWP_NOMOVE |
-                    (uint)DeferWindowPosCommands.SWP_NOSIZE | (uint)DeferWindowPosCommands.SWP_NOZORDER |
-                    (uint)DeferWindowPosCommands.SWP_NOOWNERZORDER);
+                uint currentStyle = unchecked((uint)style.ToInt64());
+                uint currentExStyle = unchecked((uint)exStyle.ToInt64());
+                if (currentStyle == 385941504 && currentExStyle == 327680)
+                {
+                    IntPtr p = new IntPtr(this.LastStype);
+                    IntPtr pp = new IntPtr(this.LastExStyle);
+                    User32.ShowWindow(this.Handle, 1);
+                    User32.SetWindowLongPtr(this.Handle, GWL.GWL_STYLE, p);
+                    User32.SetWindowLongPtr(this.Handle, GWL.GWL_EXSTYLE, pp);
+                    User32.SetWindowPos(this.Handle, IntPtr.Zero, 0, 0, 0, 0,
+                        (uint)DeferWindowPosCommands.SWP_FRAMECHANGED | (uint)DeferWindowPosCommands.SWP_NOMOVE |
+                        (uint)DeferWindowPosCommands.SWP_NOSIZE | (uint)DeferWindowPosCommands.SWP_NOZORDER |
+                        (uint)DeferWindowPosCommands.SWP_NOOWNERZORDER);
+                }
+                else
+                {
 
 
-                MessageBox.Show(this.Handle, "Accelerator", "KeyPress");
+                    this.LastStype = unchecked((uint)style.ToInt64());
+                    this.LastExStyle = unchecked((uint)exStyle.ToInt64());
+                    //369164288;327680
+                    //385941504;327680
+                    uint newStyle = 385941504;
+                    uint newExStyle = 327680;
+                    IntPtr p = new IntPtr(newStyle);
+                    IntPtr pp = new IntPtr(newExStyle);
+                    User32.ShowWindow(this.Handle, 3);
+                    User32.SetWindowLongPtr(this.Handle, GWL.GWL_STYLE, p);
+                    User32.SetWindowLongPtr(this.Handle, GWL.GWL_EXSTYLE, pp);
+                    User32.SetWindowPos(this.Handle, IntPtr.Zero, 0, 0, 0, 0,
+                        (uint)DeferWindowPosCommands.SWP_FRAMECHANGED | (uint)DeferWindowPosCommands.SWP_NOMOVE |
+                        (uint)DeferWindowPosCommands.SWP_NOSIZE | (uint)DeferWindowPosCommands.SWP_NOZORDER |
+                        (uint)DeferWindowPosCommands.SWP_NOOWNERZORDER);
+                }
             }
         }
 
@@ -94,11 +110,11 @@ namespace ConsoleCaller
                 this.Text = e.IsSuccess + "->" + this._Browser.DocumentTitle;
             else
                 this.Text = "Navigation-Error=>" + e.GetErrorText();
-         
+
         }
         private void OnNavigationStart(object sender, NavigationStartingEventArgs e)
         {
-            
+
             this.Text = "Start-Navigate" + e.uri;
         }
         private void OnDocumentTitleChanged(object sender, WebView2EventArgs e)
