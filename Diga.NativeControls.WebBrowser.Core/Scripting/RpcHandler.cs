@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Diga.NativeControls.WebBrowser.Scripting.DOM;
 
@@ -84,6 +85,19 @@ namespace Diga.NativeControls.WebBrowser.Scripting
             return rpc;
         }
 
+        public void UnloadDom()
+        {
+            try
+            {
+                RpcDomUnloadEvent?.Invoke(this, EventArgs.Empty);
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception);
+            }
+            
+           
+        }
        
         public bool ReleaseObject(object rpc)
         {
@@ -101,6 +115,7 @@ namespace Diga.NativeControls.WebBrowser.Scripting
             return false;
         }
         public event EventHandler<RpcEventHandlerArgs> RpcEvent; 
+        public event EventHandler RpcDomUnloadEvent;
         public bool Handle(string id,  string eventName, object obj )
         {
             IRpcObject o = (IRpcObject)obj;

@@ -12,10 +12,10 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
 
         public int length => Get<int>();
-        public Task<int> lengthAsync => GetAsync<int>(nameof(this.length));
+        public Task<int> lengthAsync => GetAsync<int>(nameof(length));
 
         public object value => Get<object>();
-        public Task<object> valueAsync => GetAsync<object>(nameof(this.value));
+        public Task<object> valueAsync => GetAsync<object>(nameof(value));
 
         public void add(params object[] objParams)
         {

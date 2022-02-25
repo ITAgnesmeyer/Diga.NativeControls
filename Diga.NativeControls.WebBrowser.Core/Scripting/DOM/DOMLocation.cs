@@ -20,8 +20,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> hashAsync
         {
-            get=>GetAsync<string>(nameof(this.hash));
-            set=>_=SetAsync(value,nameof(this.hash));
+            get=>GetAsync<string>(nameof(hash));
+            set=>_=SetAsync(value,nameof(hash));
         }
 
         public string host
@@ -31,8 +31,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> hostAsync
         {
-            get=>GetAsync<string>(nameof(this.host));
-            set=>_=SetAsync(value,nameof(this.host));
+            get=>GetAsync<string>(nameof(host));
+            set=>_=SetAsync(value,nameof(host));
         }
         public string hostname
         {
@@ -42,8 +42,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         public Task<string> hostnameAsync
         {
-            get=>GetAsync<string>(nameof(this.hostname));
-            set=>_=SetAsync(value,nameof(this.hostname));
+            get=>GetAsync<string>(nameof(hostname));
+            set=>_=SetAsync(value,nameof(hostname));
         }
         public string href
         {
@@ -53,12 +53,12 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         public Task<string> hrefAsync
         {
-            get=>GetAsync<string>(nameof(this.href));
-            set=>_=SetAsync(value,nameof(this.href));
+            get=>GetAsync<string>(nameof(href));
+            set=>_=SetAsync(value,nameof(href));
         }
 
         public string origin => Get<string>();
-        public Task<string> originAsync => GetAsync<string>(nameof(this.origin));
+        public Task<string> originAsync => GetAsync<string>(nameof(origin));
 
         public string pathname
         {
@@ -68,8 +68,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         public Task<string> pathnameAsync
         {
-            get=>GetAsync<string>(nameof(this.pathname));
-            set=>_=SetAsync(value,nameof(this.pathname));
+            get=>GetAsync<string>(nameof(pathname));
+            set=>_=SetAsync(value,nameof(pathname));
         }
 
         public string port
@@ -80,8 +80,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         public Task<string> portAsync
         {
-            get=>GetAsync<string>(nameof(this.port));
-            set=>_=SetAsync(value,nameof(this.port));
+            get=>GetAsync<string>(nameof(port));
+            set=>_=SetAsync(value,nameof(port));
         }
         public string protocol
         {
@@ -91,8 +91,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         public Task<string> protocolAsync
         {
-            get=>GetAsync<string>(nameof(this.protocol));
-            set=>_=SetAsync(value,nameof(this.protocol));
+            get=>GetAsync<string>(nameof(protocol));
+            set=>_=SetAsync(value,nameof(protocol));
 
         }
 
@@ -104,8 +104,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         public Task<string> searchAsync
         {
-            get=>GetAsync<string>(nameof(this.search));
-            set=>_=SetAsync(value,nameof(this.search));
+            get=>GetAsync<string>(nameof(search));
+            set=>_=SetAsync(value,nameof(search));
         }
 
     }

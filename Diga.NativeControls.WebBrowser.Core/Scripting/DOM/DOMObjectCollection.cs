@@ -27,7 +27,7 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         public DOMElement this[int index] => item(index);
 
         public int length => Get<int>();
-        public Task<int> lengthAsync => GetAsync<int>(nameof(this.length));
+        public Task<int> lengthAsync => GetAsync<int>(nameof(length));
 
         public DOMElement namedItem(string name)
         {

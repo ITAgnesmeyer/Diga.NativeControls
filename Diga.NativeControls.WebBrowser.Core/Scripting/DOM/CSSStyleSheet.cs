@@ -9,10 +9,10 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
             
         }
         public CSSRuleList cssRules => GetTypedVar<CSSRuleList>();
-        public Task<CSSRuleList> cssRulesAsync => GetTypedVarAsync<CSSRuleList>(nameof(this.cssRules));
+        public Task<CSSRuleList> cssRulesAsync => GetTypedVarAsync<CSSRuleList>(nameof(cssRules));
 
         public CSSImportRule ownerRule=>GetTypedVar<CSSImportRule>();
-        public Task<CSSImportRule> ownerRuleAsync => GetTypedVarAsync<CSSImportRule>(nameof(this.ownerRule));
+        public Task<CSSImportRule> ownerRuleAsync => GetTypedVarAsync<CSSImportRule>(nameof(ownerRule));
 
         public int insertRule(string ruleString, int index = 0) => Exec<int>(new object[] { ruleString, index });
         public Task<int> insertRuleAsync(string ruleString, int index = 0) => ExecAsync<int>(new object[] { ruleString, index },nameof(insertRule));

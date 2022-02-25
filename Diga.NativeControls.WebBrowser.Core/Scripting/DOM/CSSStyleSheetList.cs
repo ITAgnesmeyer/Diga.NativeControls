@@ -10,7 +10,7 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
 
         public int length => Get<int>();
-        public Task<int> lengthAsync => GetAsync<int>(nameof(this.length));
+        public Task<int> lengthAsync => GetAsync<int>(nameof(length));
 
         public CSSStyleSheet item(int index)
         {

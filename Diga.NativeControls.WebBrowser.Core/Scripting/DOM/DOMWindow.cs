@@ -18,6 +18,28 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
             
         }
 
+        public DOMWindow GetCopy()
+        {
+            return base.GetCopy<DOMWindow>();
+        }
+
+        public void addEventListener(string eventName, DOMScriptText scriptText, bool useCapture)
+        {
+            if (EventHandlerList.TryAdd(this.InstanceName, this))
+            {
+                Exec(new object[]{eventName,scriptText, useCapture});
+            }
+            
+        }
+
+        public async Task addEventListenerAsync(string eventName, DOMScriptText scriptText , bool useCapture)
+        {
+            if (EventHandlerList.TryAdd(this.InstanceName, this))
+            {
+                await ExecAsync<object>(new object[]{eventName,scriptText, useCapture},nameof(addEventListener));
+            }
+            
+        }
         public void alert(string message)
         {
             base.Exec(new object[] { message });
@@ -65,7 +87,7 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
 
         public bool closed => Get<bool>();
-        public Task<bool> closedAsync => GetAsync<bool>(nameof(this.closed));
+        public Task<bool> closedAsync => GetAsync<bool>(nameof(closed));
 
         public bool confirm(string message)
         {
@@ -79,11 +101,11 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         public  DOMConsole console => GetTypedVar<DOMConsole>();
 
-        public  Task<DOMConsole> consoleAsync => GetTypedVarAsync<DOMConsole>(nameof(this.console));
+        public  Task<DOMConsole> consoleAsync => GetTypedVarAsync<DOMConsole>(nameof(console));
 
         public DOMDocument document => GetTypedVar<DOMDocument>();
 
-        public Task< DOMDocument> documentAsync => GetTypedVarAsync<DOMDocument>(nameof(this.document));
+        public Task< DOMDocument> documentAsync => GetTypedVarAsync<DOMDocument>(nameof(document));
 
         public void focus()
         {
@@ -97,30 +119,30 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         public  DOMElement frameElement => GetTypedVar<DOMElement>();
 
-        public  Task< DOMElement> frameElementAsync => GetTypedVarAsync<DOMElement>(nameof(this.frameElement));
+        public  Task< DOMElement> frameElementAsync => GetTypedVarAsync<DOMElement>(nameof(frameElement));
 
         public DOMObjectCollection frames => GetTypedVar<DOMObjectCollection>();
 
-        public Task<DOMObjectCollection> framesAsync => GetTypedVarAsync<DOMObjectCollection>(nameof(this.frames));
+        public Task<DOMObjectCollection> framesAsync => GetTypedVarAsync<DOMObjectCollection>(nameof(frames));
 
         public DOMHistory history => GetTypedVar<DOMHistory>();
 
-        public Task<DOMHistory> historyAsync => GetTypedVarAsync<DOMHistory>(nameof(this.history));
+        public Task<DOMHistory> historyAsync => GetTypedVarAsync<DOMHistory>(nameof(history));
 
 
         public int innerHeight => Get<int>();
-        public Task<int> innerHeightAsync => GetAsync<int>(nameof(this.innerHeight));
+        public Task<int> innerHeightAsync => GetAsync<int>(nameof(innerHeight));
 
         public int innerWidth => Get<int>();
-        public Task<int> innerWidthAsync => GetAsync<int>(nameof(this.innerWidth));
+        public Task<int> innerWidthAsync => GetAsync<int>(nameof(innerWidth));
 
         public int length => Get<int>();
-        public Task<int> lengthAsync => GetAsync<int>(nameof(this.length));
+        public Task<int> lengthAsync => GetAsync<int>(nameof(length));
 
 
         public DOMStorage localStorage => GetTypedVar<DOMStorage>();
 
-        public Task<DOMStorage> localStorageAsync => GetTypedVarAsync<DOMStorage>(nameof(this.localStorage));
+        public Task<DOMStorage> localStorageAsync => GetTypedVarAsync<DOMStorage>(nameof(localStorage));
 
         
         public void moveBy(int x, int y)
@@ -150,7 +172,7 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> nameAsync
         {
-            get => GetAsync<string>(nameof(this.name));
+            get => GetAsync<string>(nameof(name));
             set => _ = SetAsync(value);
         }
 
@@ -170,22 +192,22 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
 
         public  DOMWindow opener => GetTypedVar<DOMWindow>();
-        public  Task<DOMWindow> openerAsync => GetTypedVarAsync<DOMWindow>(nameof(this.opener));
+        public  Task<DOMWindow> openerAsync => GetTypedVarAsync<DOMWindow>(nameof(opener));
 
         public int outerHeight => Get<int>();
-        public Task<int> outerHeightAsync => GetAsync<int>(nameof(this.outerHeight));
+        public Task<int> outerHeightAsync => GetAsync<int>(nameof(outerHeight));
 
         public int outerWidth => Get<int>();
-        public Task<int> outerWidthAsync => GetAsync<int>(nameof(this.outerWidth));
+        public Task<int> outerWidthAsync => GetAsync<int>(nameof(outerWidth));
 
         public int pageXOffset => Get<int>();
-        public Task<int> pageXOffsetAsync => GetAsync<int>(nameof(this.pageXOffset));
+        public Task<int> pageXOffsetAsync => GetAsync<int>(nameof(pageXOffset));
 
         public int pageYOffset => Get<int>();
-        public Task<int> pageYOffsetAsync => GetAsync<int>(nameof(this.pageYOffset));
+        public Task<int> pageYOffsetAsync => GetAsync<int>(nameof(pageYOffset));
 
         public DOMWindow parent => GetTypedVar<DOMWindow>();
-        public Task<DOMWindow> parentAsync => GetTypedVarAsync<DOMWindow>(nameof(this.parent));
+        public Task<DOMWindow> parentAsync => GetTypedVarAsync<DOMWindow>(nameof(parent));
 
         public void print()
         {
@@ -223,17 +245,17 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
             return ExecAsync(new object[] { x, y },nameof(resizeTo));
         }
         public DOMScreen screen=> GetTypedVar<DOMScreen>();
-        public Task<DOMScreen> screenAsync=> GetTypedVarAsync<DOMScreen>(nameof(this.screen));
+        public Task<DOMScreen> screenAsync=> GetTypedVarAsync<DOMScreen>(nameof(screen));
 
         public int screenLeft => Get<int>();
-        public Task<int> screenLeftAsync => GetAsync<int>(nameof(this.screenLeft));
+        public Task<int> screenLeftAsync => GetAsync<int>(nameof(screenLeft));
         public int screenTop => Get<int>();
-        public Task<int> screenTopAsync => GetAsync<int>(nameof(this.screenTop));
+        public Task<int> screenTopAsync => GetAsync<int>(nameof(screenTop));
 
         public int screenX => Get<int>();
-        public Task<int> screenXAsync => GetAsync<int>(nameof(this.screenX));
+        public Task<int> screenXAsync => GetAsync<int>(nameof(screenX));
         public int screenY => Get<int>();
-        public Task<int> screenYAsync => GetAsync<int>(nameof(this.screenY));
+        public Task<int> screenYAsync => GetAsync<int>(nameof(screenY));
 
         public void scrollBy(int x, int y)
         {
@@ -254,16 +276,16 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
 
         public int scrollX=> Get<int>();
-        public Task<int> scrollXAsync => GetAsync<int>(nameof(this.scrollX));
+        public Task<int> scrollXAsync => GetAsync<int>(nameof(scrollX));
         public int scrollY=> Get<int>();
-        public Task<int> scrollYAsync => GetAsync<int>(nameof(this.scrollY));
+        public Task<int> scrollYAsync => GetAsync<int>(nameof(scrollY));
 
         public DOMStorage sessionStorage => GetTypedVar<DOMStorage>();
-        public Task<DOMStorage> sessionStorageAsync => GetTypedVarAsync<DOMStorage>(nameof(this.sessionStorage ));
+        public Task<DOMStorage> sessionStorageAsync => GetTypedVarAsync<DOMStorage>(nameof(sessionStorage ));
 
         public DOMWindow self => GetTypedVar<DOMWindow>();
 
-        public Task<DOMWindow> selfAsync => GetTypedVarAsync<DOMWindow>(nameof(this.self));
+        public Task<DOMWindow> selfAsync => GetTypedVarAsync<DOMWindow>(nameof(self));
 
         public void stop()
         {
@@ -276,6 +298,6 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
 
         public DOMWindow top => GetTypedVar<DOMWindow>();
-        public Task<DOMWindow> topAsync => GetTypedVarAsync<DOMWindow>(nameof(this.top));
+        public Task<DOMWindow> topAsync => GetTypedVarAsync<DOMWindow>(nameof(top));
     }
 }

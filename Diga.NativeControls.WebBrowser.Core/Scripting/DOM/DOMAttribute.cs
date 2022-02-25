@@ -20,7 +20,7 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
             return new DOMAttribute(this._View2Control, var);
         }
         public bool isId => Get<bool>();
-        public Task<bool> isIdAsync => GetAsync<bool>(nameof(this.isId));
+        public Task<bool> isIdAsync => GetAsync<bool>(nameof(isId));
 
 
         public DOMAttribute  item(int index)
@@ -36,10 +36,10 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
 
         public int length => Get<int>();
-        public Task<int> lengthAsync => GetAsync<int>(nameof(this.length));
+        public Task<int> lengthAsync => GetAsync<int>(nameof(length));
 
         public string name => Get<string>();
-        public Task<string> nameAsync => GetAsync<string>(nameof(this.name));
+        public Task<string> nameAsync => GetAsync<string>(nameof(name));
 
         public DOMAttribute removeNamedItem(string nodeName)
         {
@@ -63,7 +63,7 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
             return new DOMAttribute(this._View2Control, var);
         }
         public bool specified => Get<bool>();
-        public Task<bool> specifiedAsync => GetAsync<bool>(nameof(this.specified));
+        public Task<bool> specifiedAsync => GetAsync<bool>(nameof(specified));
 
         public string value
         {
@@ -73,7 +73,7 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         public Task<string> valueAsync
         {
-            get => GetAsync<string>(nameof(this.value));
+            get => GetAsync<string>(nameof(value));
             set => _ = SetAsync(value,nameof(this.value));
         }
 

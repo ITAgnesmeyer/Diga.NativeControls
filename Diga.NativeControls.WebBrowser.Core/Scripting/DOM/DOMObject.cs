@@ -17,7 +17,21 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         protected DOMVar _Var;
         private bool disposedValue;
+        protected  T GetCopy<T>() where T : DOMObject
+        {
+            DOMVar var = this.GetAsVar();
+            DOMVar newVar = var.Copy();
+            return GetDomObjectFromDomVar<T>(newVar);
+        }
+        protected DOMVar GetAsVar()
+        {
+            if (this._Var == null)
+            {
+                return new DOMVar(this._View2Control, this.InstanceName);
+            }
 
+            return this._Var;
+        }
         internal DOMObject(NativeWebBrowser control) : base(control)
         {
 
@@ -114,6 +128,16 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
             DOMVar var = new DOMVar(this._View2Control, varName);
             return GetDomObjectFromDomVar<T>(var);
 
+        }
+
+        protected object GetDomObjectFromDomVar(Type type, DOMVar var)
+        {
+            if (!type.IsAssignableFrom(typeof(DOMObject)))
+            {
+                throw new ArgumentException(type.Name + " is not assigned from DOMObject");
+            }
+
+            return CreateNew(this._View2Control, var, type);
         }
 
         internal T GetDomObjectFromDomVar<T>(DOMVar var) where T : DOMObject
@@ -277,13 +301,13 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposedValue)
+            if (!disposedValue)
             {
                 if (disposing)
                 {
                    this._Var?.Dispose();
                 }
-                this.disposedValue = true;
+                disposedValue = true;
             }
         }
 

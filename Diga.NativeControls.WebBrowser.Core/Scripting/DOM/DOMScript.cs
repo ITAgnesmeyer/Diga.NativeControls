@@ -17,14 +17,14 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         public Task<bool> asyncAsync
         {
-            get => GetAsync<bool>(nameof(this.async));
-            set => _ = SetAsync(value,nameof(this.async));
+            get => GetAsync<bool>(nameof(async));
+            set => _ = SetAsync(value,nameof(async));
         }
 
         public Task<string> charset
         {
-            get => GetAsync<string>(nameof(this.charset));
-            set => _ = SetAsync(value,nameof(this.charset));
+            get => GetAsync<string>(nameof(charset));
+            set => _ = SetAsync(value,nameof(charset));
         }
 
         public string crossOrigin
@@ -35,8 +35,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         public Task<string> crossOriginAsync
         {
-            get => GetAsync<string>(nameof(this.crossOrigin));
-            set => _ = SetAsync(value,nameof(this.crossOrigin));
+            get => GetAsync<string>(nameof(crossOrigin));
+            set => _ = SetAsync(value,nameof(crossOrigin));
         }
 
         public bool defer
@@ -46,8 +46,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<bool> deferAsync
         {
-            get => GetAsync<bool>(nameof(this.defer));
-            set => _ = SetAsync(value,nameof(this.defer));
+            get => GetAsync<bool>(nameof(defer));
+            set => _ = SetAsync(value,nameof(defer));
         }
 
         public string src
@@ -57,8 +57,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> srcAsync
         {
-            get => GetAsync<string>(nameof(this.src));
-            set => _ = SetAsync(value,nameof(this.src));
+            get => GetAsync<string>(nameof(src));
+            set => _ = SetAsync(value,nameof(src));
         }
         public string text
         {
@@ -67,8 +67,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> textAsync
         {
-            get => GetAsync<string>(nameof(this.text));
-            set => _ = SetAsync(value,nameof(this.text));
+            get => GetAsync<string>(nameof(text));
+            set => _ = SetAsync(value,nameof(text));
         }
 
         public string type
@@ -78,8 +78,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> typeAsync
         {
-            get => GetAsync<string>(nameof(this.type));
-            set => _ = SetAsync(value,nameof(this.type));
+            get => GetAsync<string>(nameof(type));
+            set => _ = SetAsync(value,nameof(type));
 
         }
     }

@@ -5,57 +5,6 @@ using Diga.Core.Threading;
 
 namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 {
-    public static class DOMGC
-    {
-        public static List<DOMVar> _DomVars;
-
-        static DOMGC()
-        {
-            SyncLock = new object();
-            _DomVars = new List<DOMVar>();
-        }
-
-        private static object SyncLock;
-        public static void AddVar(DOMVar item)
-        {
-            lock (SyncLock)
-            {
-                _DomVars.Add(item);
-            }
-        }
-
-        public static void CleanUp()
-        {
-            UIDispatcher.UIThread.Post(() =>
-            {
-
-
-                lock (SyncLock)
-                {
-                    List<DOMVar> deleted = new List<DOMVar>();
-                    foreach (DOMVar domVar in _DomVars)
-                    {
-                        if(!domVar.VarExist())
-                            deleted.Add(domVar);
-                        
-                    }
-
-                    while (deleted.Count > 0)
-                    {
-                        var dw = deleted[0];
-                        _DomVars.Remove(dw);
-                        deleted.RemoveAt(0);
-                        dw.Dispose();
-                        dw = null;
-                    }
-
-                    deleted = null;
-                }
-            });
-
-        }
-
-    }
     public class DOMVar : ScriptObjectBase, IDisposable
     {
 
@@ -85,13 +34,13 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
             {
                 CreateVar();
             }
-            DOMGC.AddVar(this);
+            //DOMGC.AddVar(this);
         }
 
         internal DOMVar(NativeWebBrowser control, string objectId) : base(control)
         {
             this._ObjectId = objectId;
-            DOMGC.AddVar(this);
+            //DOMGC.AddVar(this);
         }
         public string Name => this._ObjectId;
 
@@ -169,27 +118,27 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposedValue)
+            if (!disposedValue)
             {
                 if (disposing)
                 {
-
-
-                }
                 if (UIDispatcher.UIThread.CheckAccess())
                 {
                     if (VarExist())
                         DeleteVar();
 
                 }
-                this.disposedValue = true;
+
             }
+
+                disposedValue = true;
+        }
         }
 
-        ~DOMVar()
-        {
-            Dispose(false);
-        }
+        //~DOMVar()
+        //{
+        //    Dispose(false);
+        //}
         public async Task DisposeAsync()
         {
             await DeleteVarAsync();

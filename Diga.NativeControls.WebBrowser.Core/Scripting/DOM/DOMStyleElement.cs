@@ -16,8 +16,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> mediumAsync
         {
-            get => GetAsync<string>(nameof(this.medium));
-            set => _ = SetAsync(value,nameof(this.medium));
+            get => GetAsync<string>(nameof(medium));
+            set => _ = SetAsync(value,nameof(medium));
         }
 
         public bool disabled
@@ -27,15 +27,15 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<bool> disabledAsync
         {
-            get => GetAsync<bool>(nameof(this.disabled));
-            set => _ = SetAsync(value,nameof(this.disabled));
+            get => GetAsync<bool>(nameof(disabled));
+            set => _ = SetAsync(value,nameof(disabled));
         }
 
 
 
 
         public CSSStyleSheet sheet => GetTypedVar<CSSStyleSheet>();
-        public Task<CSSStyleSheet> sheetAsync => GetTypedVarAsync<CSSStyleSheet>(nameof(this.sheet));
+        public Task<CSSStyleSheet> sheetAsync => GetTypedVarAsync<CSSStyleSheet>(nameof(sheet));
 
     }
 }

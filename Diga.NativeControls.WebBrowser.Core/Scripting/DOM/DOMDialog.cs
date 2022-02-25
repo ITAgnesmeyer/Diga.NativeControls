@@ -17,8 +17,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         public Task<bool> openAsync
         {
-            get => GetAsync<bool>(nameof(this.open));
-            set => _ = SetAsync(value,nameof(this.open));
+            get => GetAsync<bool>(nameof(open));
+            set => _ = SetAsync(value,nameof(open));
         }
 
         public string returnValue
@@ -28,8 +28,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> returnValueAsync
         {
-            get => GetAsync<string>(nameof(this.returnValue));
-            set => _ = SetAsync(value,nameof(this.returnValue));
+            get => GetAsync<string>(nameof(returnValue));
+            set => _ = SetAsync(value,nameof(returnValue));
         }
 
         public void close() => Exec(new object[] { });

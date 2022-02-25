@@ -11,7 +11,7 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         public string key(int index) => Exec<string>(new object[] { index });
         public Task<string> keyAsync(int index) => ExecAsync<string>(new object[] { index },nameof(key));
         public int length => Get<int>();
-        public Task<int> lengthAsync => GetAsync<int>(nameof(this.length));
+        public Task<int> lengthAsync => GetAsync<int>(nameof(length));
 
         public string getItem(string index) => Exec<string>(new object[] { index });
         public Task<string> getItemAsync(string index) => ExecAsync<string>(new object[] { index },nameof(getItem));

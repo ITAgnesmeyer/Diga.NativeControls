@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using CoreWindowsWrapper;
+using Diga.Core.Threading;
 using Diga.NativeControls.WebBrowser.Scripting;
+using Diga.NativeControls.WebBrowser.Scripting.DOM;
 using Diga.WebView2.Wrapper;
 using Diga.WebView2.Wrapper.EventArguments;
 
@@ -52,6 +55,10 @@ namespace Diga.NativeControls.WebBrowser
         public event EventHandler<WebView2EventArgs> IsMutedChanged;
         public event EventHandler<WebView2EventArgs> IsDocumentPlayingAudioChanged;
         public event EventHandler<WebView2EventArgs> IsDefaultDownloadDialogOpenChanged;
+
+        public event EventHandler DocumentLoading;
+        public event EventHandler DocumentUnload;
+
         private void OnWebWindowBeforeCreate(object sender, BeforeCreateEventArgs e)
         {
             WebWindowInitSettings(e);
@@ -66,10 +73,15 @@ namespace Diga.NativeControls.WebBrowser
 
         protected virtual void OnWebResourceRequested(WebResourceRequestedEventArgs e)
         {
+            using (var def = e.GetDeferral())
+            {
+
+
             CheckMonitoring(e);
 
 
             WebResourceRequested?.Invoke(this, e);
+        }
         }
 
 
@@ -219,9 +231,51 @@ namespace Diga.NativeControls.WebBrowser
             }
         }
 
+        //private DOMDocument _Docuemnt;
+        private DOMWindow _Window;
+        protected virtual void OnDocumentLoading()
+        {
+            //DOMWindow window = this.GetDOMWindow();
+            //if (this._Docuemnt != null)
+            //    this._Docuemnt.DomEvent -= OnDomEvent;
+            UIDispatcher.UIThread.Post(() =>
+            {
+                try
+                {
+                    this._Window = this.GetDOMWindow().GetCopy();
+                    this._Window.addEventListener("error", new DOMEventListenerScript(this._Window, "error"), true);
+                    this._Window.DomEvent += OnDomEvent;
+                    this.GetDOMConsole().log("Document_Loading");
+                }
+                catch (Exception e)
+                {
+
+                    Debug.Print(e.ToString());
+                }
+
+
+                DocumentLoading?.Invoke(this, EventArgs.Empty);
+
+            });
+        }
+
+        private void OnDomEvent(object sender, RpcEventHandlerArgs e)
+        {
+            switch (e.EventName)
+            {
+                case "error":
+                    {
+                        Debug.Print("Error");
+                    }
+                    break;
+
+            }
+        }
+
         protected virtual void OnDomContentLoaded(DOMContentLoadedEventArgs e)
         {
             DOMContentLoaded?.Invoke(this, e);
+            UIDispatcher.UIThread.InvokeAsync(OnDocumentLoading);
         }
 
         protected virtual void OnWebResourceResponseReceived(WebResourceResponseReceivedEventArgs e)
@@ -260,6 +314,11 @@ namespace Diga.NativeControls.WebBrowser
         private void OnRpcEventIntern(object sender, RpcEventHandlerArgs e)
         {
             OnScriptEvent(e);
+        }
+
+        private void OnRpcDomUnloadEvent(object sender, EventArgs e)
+        {
+            OnDocumentUnload();
         }
 
 
@@ -537,5 +596,17 @@ namespace Diga.NativeControls.WebBrowser
             IsDefaultDownloadDialogOpenChanged?.Invoke(this, e);
         }
 
+
+        protected virtual void OnDocumentUnload()
+        {
+            Task.Run(() =>
+            {
+
+                DocumentUnload?.Invoke(this, EventArgs.Empty);
+
+
+            });
+
+        }
     }
 }

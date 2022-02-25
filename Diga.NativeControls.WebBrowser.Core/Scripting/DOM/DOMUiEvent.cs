@@ -10,10 +10,10 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
 
         public int detail => Get<int>();
-        public Task<int> detailAsync => GetAsync<int>(nameof(this.detail));
+        public Task<int> detailAsync => GetAsync<int>(nameof(detail));
 
         public DOMWindow view => GetTypedVar<DOMWindow>();
-        public Task<DOMWindow> viewAsync => GetTypedVarAsync<DOMWindow>(nameof(this.view));
+        public Task<DOMWindow> viewAsync => GetTypedVarAsync<DOMWindow>(nameof(view));
 
 
     }

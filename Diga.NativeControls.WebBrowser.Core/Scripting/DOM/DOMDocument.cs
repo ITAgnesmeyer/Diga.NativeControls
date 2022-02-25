@@ -14,8 +14,12 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         }
 
+        public DOMDocument GetCopy()
+        {
+            return base.GetCopy<DOMDocument>();
+        }
         public DOMElement activeElement => GetTypedVar<DOMElement>();
-        public Task< DOMElement> activeElementAsync => GetTypedVarAsync<DOMElement>(nameof(this.activeElement));
+        public Task< DOMElement> activeElementAsync => GetTypedVarAsync<DOMElement>(nameof(activeElement));
 
         public void addEventListener(string eventName, DOMScriptText scriptText, bool useCapture)
         {
@@ -49,7 +53,7 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
 
         public DOMObjectCollection anchors => GetTypedVar<DOMObjectCollection>();
-        public Task<DOMObjectCollection> anchorsAsync => GetTypedVarAsync<DOMObjectCollection>(nameof(this.anchors));
+        public Task<DOMObjectCollection> anchorsAsync => GetTypedVarAsync<DOMObjectCollection>(nameof(anchors));
 
         public DOMElement body
         {
@@ -58,14 +62,14 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task< DOMElement> bodyAsync
         {
-            get=> GetTypedVarAsync<DOMElement>(nameof(this.body));
-            set => _ = SetAsync(value,nameof(this.body));
+            get=> GetTypedVarAsync<DOMElement>(nameof(body));
+            set => _ = SetAsync(value,nameof(body));
         }
 
 
         public string baseURI => Get<string>();
 
-        public Task<string> baseURIAsync => GetAsync<string>(nameof(this.baseURI));
+        public Task<string> baseURIAsync => GetAsync<string>(nameof(baseURI));
 
         public void close() => Exec(new object[] { });
         public Task closeAsync() => ExecAsync<object>(new object[] { },nameof(close));
@@ -77,12 +81,12 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> cookieAsync
         {
-            get => GetAsync<string>(nameof(this.cookie));
-            set=> _ = SetAsync(value,nameof(this.cookie));
+            get => GetAsync<string>(nameof(cookie));
+            set=> _ = SetAsync(value,nameof(cookie));
         }
 
         public string characterSet => Get<string>();
-        public Task<string> characterSetAsync => GetAsync<string>(nameof(this.characterSet));
+        public Task<string> characterSetAsync => GetAsync<string>(nameof(characterSet));
 
 
         public DOMAttribute createAttribute(string attributeName)
@@ -152,10 +156,10 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
 
         public DOMWindow defaultView => GetTypedVar<DOMWindow>();
-        public Task<DOMWindow> defaultViewAsync => GetTypedVarAsync<DOMWindow>(nameof(this.defaultView));
+        public Task<DOMWindow> defaultViewAsync => GetTypedVarAsync<DOMWindow>(nameof(defaultView));
 
         public DOMElement documentElement => GetTypedVar<DOMElement>();
-        public Task<DOMElement> documentElementAsync => GetTypedVarAsync<DOMElement>(nameof(this.documentElement));
+        public Task<DOMElement> documentElementAsync => GetTypedVarAsync<DOMElement>(nameof(documentElement));
 
         public string designMode
         {
@@ -164,8 +168,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> designModeAsync
         {
-            get => GetAsync<string>(nameof(this.designMode));
-            set => _ = SetAsync(value,nameof(this.designMode));
+            get => GetAsync<string>(nameof(designMode));
+            set => _ = SetAsync(value,nameof(designMode));
         }
 
         public string documentURI
@@ -175,17 +179,17 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> documentURIAsync
         {
-            get => GetAsync<string>(nameof(this.documentURI));
-            set => _ = SetAsync(value,nameof(this.documentURI));
+            get => GetAsync<string>(nameof(documentURI));
+            set => _ = SetAsync(value,nameof(documentURI));
         }
 
 
         public string domain => Get<string>();
-        public Task<string> domainAsync => GetAsync<string>(nameof(this.domain));
+        public Task<string> domainAsync => GetAsync<string>(nameof(domain));
 
         public DOMObjectCollection embeds => GetTypedVar<DOMObjectCollection>();
         
-        public Task< DOMObjectCollection> embedsAsync => GetTypedVarAsync<DOMObjectCollection>(nameof(this.embeds));
+        public Task< DOMObjectCollection> embedsAsync => GetTypedVarAsync<DOMObjectCollection>(nameof(embeds));
 
         public bool execCommand(string command, bool showUI, string value)
         {
@@ -197,10 +201,10 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
 
         public DOMObjectCollection forms => GetTypedVar<DOMObjectCollection>();
-        public Task<DOMObjectCollection> formsAsync => GetTypedVarAsync<DOMObjectCollection>(nameof(this.forms));
+        public Task<DOMObjectCollection> formsAsync => GetTypedVarAsync<DOMObjectCollection>(nameof(forms));
 
         public DOMElement fullscreenElement => GetTypedVar<DOMElement>();
-        public Task<DOMElement> fullscreenElementAsync => GetTypedVarAsync<DOMElement>(nameof(this.fullscreenElement));
+        public Task<DOMElement> fullscreenElementAsync => GetTypedVarAsync<DOMElement>(nameof(fullscreenElement));
 
 
         public bool fullscreenEnabled() => Exec<bool>(new object[] { });
@@ -267,10 +271,10 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
             }
         }
 
-        public Task<DOMElement> headAsync => GetTypedVarAsync<DOMElement>(nameof(this.head));
+        public Task<DOMElement> headAsync => GetTypedVarAsync<DOMElement>(nameof(head));
 
         public DOMObjectCollection images => GetTypedVar<DOMObjectCollection>();
-        public Task<DOMObjectCollection> imagesAsync => GetTypedVarAsync<DOMObjectCollection>(nameof(this.images));
+        public Task<DOMObjectCollection> imagesAsync => GetTypedVarAsync<DOMObjectCollection>(nameof(images));
 
         public DOMElement importNode(DOMElement node, bool deep)
         {
@@ -285,13 +289,13 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
 
         public string inputEncoding => Get<string>();
-        public Task<string> inputEncodingAsync => GetAsync<string>(nameof(this.inputEncoding));
+        public Task<string> inputEncodingAsync => GetAsync<string>(nameof(inputEncoding));
 
         public string lastModified => Get<string>();
-        public Task<string> lastModifiedAsync => GetAsync<string>(nameof(this.lastModified));
+        public Task<string> lastModifiedAsync => GetAsync<string>(nameof(lastModified));
 
         public DOMObjectCollection links => GetTypedVar<DOMObjectCollection>();
-        public Task<DOMObjectCollection> linksAsync => GetTypedVarAsync<DOMObjectCollection>(nameof(this.links));
+        public Task<DOMObjectCollection> linksAsync => GetTypedVarAsync<DOMObjectCollection>(nameof(links));
 
         public void normalize() => Exec(new object[] { });
         public Task normalizeAsync() => ExecAsync<object>(new object[] { },nameof(normalize));
@@ -321,10 +325,10 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
 
         public string readyState => Get<string>();
-        public Task<string> readyStateAsync => GetAsync<string>(nameof(this.readyState));
+        public Task<string> readyStateAsync => GetAsync<string>(nameof(readyState));
 
         public string referrer => Get<string>();
-        public Task<string> referrerAsync => GetAsync<string>(nameof(this.referrer));
+        public Task<string> referrerAsync => GetAsync<string>(nameof(referrer));
 
         public DOMElement renameNode(DOMElement node, string namespaceUri, string nodeName)
         {
@@ -345,12 +349,12 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<bool> strictErrorCheckingAsync
         {
-            get => GetAsync<bool>(nameof(this.strictErrorChecking));
-            set=> _ = SetAsync(value,nameof(this.strictErrorChecking));
+            get => GetAsync<bool>(nameof(strictErrorChecking));
+            set=> _ = SetAsync(value,nameof(strictErrorChecking));
         }
 
         public CSSStyleSheetList styleSheets => GetTypedVar<CSSStyleSheetList>();
-        public Task<CSSStyleSheetList> styleSheetsAsync => GetTypedVarAsync<CSSStyleSheetList>(nameof(this.styleSheets));
+        public Task<CSSStyleSheetList> styleSheetsAsync => GetTypedVarAsync<CSSStyleSheetList>(nameof(styleSheets));
 
         public string title
         {
@@ -359,12 +363,12 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> titleAsync
         {
-            get => GetAsync<string>(nameof(this.title));
-            set => _ = SetAsync(value,nameof(this.title));
+            get => GetAsync<string>(nameof(title));
+            set => _ = SetAsync(value,nameof(title));
         }
 
         public string URL => Get<string>();       
-        public Task<string> URLAsync => GetAsync<string>(nameof(this.URL));
+        public Task<string> URLAsync => GetAsync<string>(nameof(URL));
 
         public void write(params object[] parameters) => Exec(parameters);
         public Task writeAsync(params object[] parameters) => ExecAsync<object>(parameters,nameof(write));
@@ -379,7 +383,7 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
             {
                 if (disposing)
                 {
-                    this._head?.Dispose();
+                    _head?.Dispose();
                 }
                 this.disposedValues = true;
             }

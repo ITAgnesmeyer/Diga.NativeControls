@@ -9,7 +9,7 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
             
         }
         public string href => Get<string>();
-        public Task<string> hrefAsync => GetAsync<string>(nameof(this.href));
+        public Task<string> hrefAsync => GetAsync<string>(nameof(href));
 
         public string media
         {
@@ -19,8 +19,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         public Task<string> mediaAsync
         {
-            get => GetAsync<string>(nameof(this.media));
-            set => _ = SetAsync(value,nameof(this.media));
+            get => GetAsync<string>(nameof(media));
+            set => _ = SetAsync(value,nameof(media));
         }
 
 

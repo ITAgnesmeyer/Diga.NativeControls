@@ -11,14 +11,14 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         
         public Task<bool> disabled
         {
-            get => GetAsync<bool>(nameof(this.disabled));
-            set=> _ = SetAsync(value,nameof(this.disabled));
+            get => GetAsync<bool>(nameof(disabled));
+            set=> _ = SetAsync(value,nameof(disabled));
         }
 
         public Task<string> href
         {
-            get => GetAsync<string>(nameof(this.href));
-            set=> _ = SetAsync(value,nameof(this.href));
+            get => GetAsync<string>(nameof(href));
+            set=> _ = SetAsync(value,nameof(href));
         }
 
         public string hreflang
@@ -28,8 +28,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> hreflangAsync
         {
-            get => GetAsync<string>(nameof(this.hreflang));
-            set=> _ = SetAsync(value,nameof(this.hreflang));
+            get => GetAsync<string>(nameof(hreflang));
+            set=> _ = SetAsync(value,nameof(hreflang));
         }
 
         public string media
@@ -39,8 +39,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> mediaAsync
         {
-            get => GetAsync<string>(nameof(this.media));
-            set => _= SetAsync(value,nameof(this.media));
+            get => GetAsync<string>(nameof(media));
+            set => _= SetAsync(value,nameof(media));
         }
 
         public string rel
@@ -50,8 +50,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> relAsync
         {
-            get => GetAsync<string>(nameof(this.rel));
-            set=> _ = SetAsync(value,nameof(this.rel));
+            get => GetAsync<string>(nameof(rel));
+            set=> _ = SetAsync(value,nameof(rel));
         }
 
         public string type
@@ -61,8 +61,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> typeAsync
         {
-            get => GetAsync<string>(nameof(this.type));
-            set => _ = SetAsync(value,nameof(this.type));
+            get => GetAsync<string>(nameof(type));
+            set => _ = SetAsync(value,nameof(type));
         }
 
         public string integrity
@@ -72,8 +72,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> integrityAsync
         {
-            get => GetAsync<string>(nameof(this.integrity));
-            set=> _ = SetAsync(value,nameof(this.integrity));
+            get => GetAsync<string>(nameof(integrity));
+            set=> _ = SetAsync(value,nameof(integrity));
         }
 
         public string crossOrigin
@@ -83,8 +83,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
         }
         public Task<string> crossOriginAsync
         {
-            get => GetAsync<string>(nameof(this.crossOrigin));
-            set=> _ = SetAsync(value,nameof(this.crossOrigin));
+            get => GetAsync<string>(nameof(crossOrigin));
+            set=> _ = SetAsync(value,nameof(crossOrigin));
         }
 
         public string sizes
@@ -95,8 +95,8 @@ namespace Diga.NativeControls.WebBrowser.Scripting.DOM
 
         public Task<string> sizesAsync
         {
-            get => GetAsync<string>(nameof(this.sizes));
-            set => _ = SetAsync(value, nameof(this.sizes));
+            get => GetAsync<string>(nameof(sizes));
+            set => _ = SetAsync(value, nameof(sizes));
         }
     }
 }
