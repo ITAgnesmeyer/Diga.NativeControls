@@ -12,24 +12,27 @@
     <PackageReleaseNotes>WebBrowserControl build with WebView2 and CoreWindowsWrapper</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <AssemblyName>Diga.NativeControls.WebBrowser</AssemblyName>
-    <AssemblyVersion>1.0.22</AssemblyVersion>
-    <FileVersion>1.0.22</FileVersion>
+    <AssemblyVersion>1.0.23</AssemblyVersion>
+    <FileVersion>1.0.23</FileVersion>
     <PackageProjectUrl>https://github.com/ITAgnesmeyer/WebAssemblyViewer</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ITAgnesmeyer/Diga.NativeControls</RepositoryUrl>
-    <version>1.0.22</version>
+    <version>1.0.23</version>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
+
+
 
   <ItemGroup>
     <None Include="logo.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CoreWindowsWrapper" Version="2.0.2" />
+    <PackageReference Include="CoreWindowsWrapper" Version="2.0.3" />
     <PackageReference Include="Diga.Core.Api.Win32" Version="2.0.5" />
     <PackageReference Include="Diga.Core.Json" Version="1.0.2" />
     <PackageReference Include="Diga.Core.Threading" Version="1.0.5" />
-    <PackageReference Include="Diga.WebView2.Wrapper" Version="16.0.3" />
+    <PackageReference Include="Diga.WebView2.Scripting" Version="1.17.1" />
+    <PackageReference Include="Diga.WebView2.Wrapper" Version="17.0.1" />
     <PackageReference Include="MimeTypeExtension" Version="1.0.28" />
   </ItemGroup>
 

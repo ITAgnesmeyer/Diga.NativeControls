@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
 using System.Runtime.CompilerServices;
 using CoreWindowsWrapper;
 using Diga.Core.Api.Win32;
 using Diga.Core.Threading;
-using Diga.NativeControls.WebBrowser.Scripting;
-using Diga.WebView2.Interop;
-
+using Diga.WebView2.Scripting;
 using Diga.WebView2.Wrapper;
 using Diga.WebView2.Wrapper.EventArguments;
-using Diga.WebView2.Wrapper.Types;
-using MimeTypeExtension;
 
 namespace Diga.NativeControls.WebBrowser
 {

@@ -3,14 +3,16 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using CoreWindowsWrapper;
 using Diga.Core.Threading;
-using Diga.NativeControls.WebBrowser.Scripting;
-using Diga.NativeControls.WebBrowser.Scripting.DOM;
+
+using Diga.WebView2.Interop;
+using Diga.WebView2.Scripting;
+using Diga.WebView2.Scripting.DOM;
 using Diga.WebView2.Wrapper;
 using Diga.WebView2.Wrapper.EventArguments;
 
 namespace Diga.NativeControls.WebBrowser
 {
-     public partial class NativeWebBrowser
+     public partial class NativeWebBrowser:IWebViewControl
     {
        
 
@@ -58,6 +60,20 @@ namespace Diga.NativeControls.WebBrowser
 
         public event EventHandler DocumentLoading;
         public event EventHandler DocumentUnload;
+
+        private event EventHandler<IExecuteScriptCompletedEventArgs> ExecuteScriptCompletedInterface;
+        event EventHandler<IExecuteScriptCompletedEventArgs> IWebViewControlEvents.ExecuteScriptCompleted
+        {
+            add
+            {
+                this.ExecuteScriptCompletedInterface += value;
+            }
+
+            remove
+            {
+                this.ExecuteScriptCompletedInterface -= value;
+            }
+        }
 
         private void OnWebWindowBeforeCreate(object sender, BeforeCreateEventArgs e)
         {
@@ -159,6 +175,15 @@ namespace Diga.NativeControls.WebBrowser
 
         protected virtual void OnExecuteScriptCompleted(ExecuteScriptCompletedEventArgs e)
         {
+            try
+            {
+                ExecuteScriptCompletedInterface?.Invoke(this, e);
+            }
+            catch (Exception exception)
+            {
+                Debug.Print("ExecuteScriptCompleted Exception:"+exception.ToString());
+            }
+
             ExecuteScriptCompleted?.Invoke(this, e);
         }
 

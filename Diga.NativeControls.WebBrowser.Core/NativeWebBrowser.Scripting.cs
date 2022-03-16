@@ -2,8 +2,8 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Diga.Core.Threading;
-using Diga.NativeControls.WebBrowser.Scripting;
-using Diga.NativeControls.WebBrowser.Scripting.DOM;
+using Diga.WebView2.Scripting;
+using Diga.WebView2.Scripting.DOM;
 using Diga.WebView2.Wrapper.EventArguments;
 
 namespace Diga.NativeControls.WebBrowser
