@@ -123,14 +123,6 @@ namespace Diga.NativeControls.WebBrowser
             }
         }
 
-        private bool MonitoringFileExist(string file)
-        {
-            if (file.StartsWith("/"))
-                file = file.Substring(1);
-            file = file.Replace("/", "\\");
-            string fullName = Path.Combine(this.MonitoringFolder, file);
-            return File.Exists(fullName);
-        }
         private bool GetFileStream(string url, out ResponseInfo responseInfo)
         {
             if (!url.StartsWith(this.MonitoringUrl))
@@ -139,18 +131,9 @@ namespace Diga.NativeControls.WebBrowser
                 return false;
             }
 
-            Uri uri = new Uri(url);
-            
-
             //TestMimeTypes();
             string baseDirectory = this.MonitoringFolder;
-            
-            string file = MonitoringFileExist(uri.AbsolutePath) ? uri.AbsolutePath : "";
-            
-            if (file == "/")
-                file = "";
-            if (file.StartsWith("/"))
-                file = file.Substring(1);
+            string file = url.Replace(this.MonitoringUrl, "");
             if (string.IsNullOrEmpty(file))
                 file = "index.html";
             file = file.Replace("/", "\\");

@@ -7,7 +7,7 @@ namespace Diga.NativeControls.WebBrowser
 {
     public partial class NativeWebBrowser
     {
-        private bool _DefaultContextMenusEnabled = true;
+         private bool _DefaultContextMenusEnabled = true;
         private string _Url;
 
         private bool _DefaultScriptDialogsEnabled = true;
@@ -33,7 +33,7 @@ namespace Diga.NativeControls.WebBrowser
         public string MonitoringFolder { get; set; } = "";
         public string MonitoringUrl { get; set; } = "";
         public bool EnableMonitoring { get; set; } = false;
-
+      
 
         private Color _DefaultBackgroundColor = Color.Empty;
 
@@ -57,7 +57,7 @@ namespace Diga.NativeControls.WebBrowser
             }
         }
 
-
+        
         public Color DefaultBackgroundColor
         {
             get
@@ -93,7 +93,7 @@ namespace Diga.NativeControls.WebBrowser
             }
         }
 
-
+ 
         public string HtmlContent
         {
             get => this._HtmlContent;
@@ -139,8 +139,7 @@ namespace Diga.NativeControls.WebBrowser
                 this._IsGeneralAutoFillEnabled = value;
                 if (this.CheckIsCreatedOrEnded)
                 {
-                    if (this._WebViewControl.Settings != null)
-                        this._WebViewControl.Settings.IsGeneralAutofillEnabled = value;
+                    this._WebViewControl.Settings.IsGeneralAutofillEnabled = value;
                 }
             }
         }
@@ -179,11 +178,11 @@ namespace Diga.NativeControls.WebBrowser
                 this._IsWebMessageEnabled = value;
                 if (this.CheckIsCreatedOrEnded)
                 {
-                    this._WebViewControl.Settings.IsWebMessageEnabled = value;
+                    this._WebViewControl.Settings.IsWebMessageEnabled = new CBOOL(value);
                 }
             }
         }
-
+        
 
         public bool IsStatusBarEnabled
         {
@@ -198,8 +197,8 @@ namespace Diga.NativeControls.WebBrowser
             }
         }
 
-
-
+      
+   
         public bool IsScriptEnabled
         {
             get => this._IsScriptEnabled;
@@ -238,7 +237,7 @@ namespace Diga.NativeControls.WebBrowser
                 this._DevToolsEnabled = value;
                 if (this.CheckIsCreatedOrEnded)
                 {
-                    this._WebViewControl.Settings.AreDevToolsEnabled = value;
+                    this._WebViewControl.Settings.AreDevToolsEnabled =value;
                 }
             }
         }

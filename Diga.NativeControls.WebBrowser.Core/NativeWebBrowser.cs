@@ -10,7 +10,7 @@ using Diga.WebView2.Wrapper.EventArguments;
 namespace Diga.NativeControls.WebBrowser
 {
 
-   
+
 
     public partial class NativeWebBrowser : NativeControlBase
     {
@@ -18,7 +18,7 @@ namespace Diga.NativeControls.WebBrowser
         //private const string JAVASCRIPT_CANNOT_BE_NULL_OR_EMPTY = "javaScript cannot be NULL or empty";
         private NativeWindow _ParentNativeWindow = null;
         private WebView2Control _WebViewControl;
-       
+
         protected override void Initialize()
         {
             this._RpcHandler = new RpcHandler();
@@ -40,7 +40,7 @@ namespace Diga.NativeControls.WebBrowser
             {
                 this._WebViewControl = new WebView2Control(this.Handle, this.BrowserExecutableFolder, this.BrowserUserDataFolder, this.BrowserAdditionArgs);
                 WireEvents(this._WebViewControl);
-              
+
 
             }
             else
@@ -75,7 +75,7 @@ namespace Diga.NativeControls.WebBrowser
             e.Settings.IsPinchZoomEnabled = true;
         }
 
-    
+
 
         public void DoDock()
         {
@@ -109,11 +109,11 @@ namespace Diga.NativeControls.WebBrowser
 
 
         }
-          private void WebWindowInitAction()
+        private void WebWindowInitAction()
         {
             this.IsCreated = true;
             this.IsBrowserEnded = false;
-           
+
             AddScriptToExecuteOnDocumentCreated(
                 "class ScriptErrorObject{constructor(e,t,r,n,i,c){this.name=e,this.message=t,this.fileName=r,this.lineNumber=n,this.columnNumber=i,this.stack=c}}window.external={sendMessage:function(e){window.chrome.webview.postMessage(e)},receiveMessage:function(e){window.chrome.webview.addEventListener(\"message\",(function(t){e(t.data)}))},evalScript:function(e){try{return eval(e)}catch(e){let t=new ScriptErrorObject(e.name,e.message,e.fileName,e.lineNumber,e.columnNumber,e.stack);return JSON.stringify(t)}},executeScript:function(e){try{return new Function(e)()}catch(e){let t=new ScriptErrorObject(e.name,e.message,e.fileName,e.lineNumber,e.columnNumber,e.stack);return JSON.stringify(t)}}};");
             AddScriptToExecuteOnDocumentCreated(
@@ -131,7 +131,7 @@ namespace Diga.NativeControls.WebBrowser
             AddRemoteObject("RpcHandler", this._RpcHandler);
             //this._WebViewControl.SetVirtualHostNameToFolderMapping("diga.resources","c:\\temp",COREWEBVIEW2_HOST_RESOURCE_ACCESS_KIND.COREWEBVIEW2_HOST_RESOURCE_ACCESS_KIND_ALLOW);
         }
-      
+
         private bool CheckIsCreatedOrEnded
         {
             get
@@ -141,8 +141,8 @@ namespace Diga.NativeControls.WebBrowser
                 return true;
             }
         }
-     
-      
+
+
         private void CheckIsCreatedOrEndedWithThrow()
         {
             if (!this.CheckIsCreatedOrEnded)
@@ -154,30 +154,30 @@ namespace Diga.NativeControls.WebBrowser
             if (!UIDispatcher.UIThread.CheckAccess())
                 throw new InvalidOperationException($"method ({member}) can only execute on UI-Thread");
         }
-      
 
-      
-       
-        public WebResourceResponse CreateResponse(ResponseInfo responseInfo)
-        {
-            WebResourceResponse response = null;
-            if (this.CheckIsCreatedOrEnded)
-            {
-                response = this._WebViewControl.GetResponseStream(responseInfo.Stream, responseInfo.StatusCode,
-                    responseInfo.StatusText, responseInfo.HeaderToString(), responseInfo.ContentType);
-            }
 
-            return response;
-        }
-        
+
+
+        //public WebResourceResponse CreateResponse(ResponseInfo responseInfo)
+        //{
+        //    WebResourceResponse response = null;
+        //    if (this.CheckIsCreatedOrEnded)
+        //    {
+        //        response = this._WebViewControl.GetResponseStream(responseInfo.Stream, responseInfo.StatusCode,
+        //            responseInfo.StatusText, responseInfo.HeaderToString(), responseInfo.ContentType);
+        //    }
+
+        //    return response;
+        //}
+
 
         private void OnParentSize(object sender, SizeEventArgs e)
         {
             this.DoDock();
         }
 
-      
 
-       
+
+
     }
 }

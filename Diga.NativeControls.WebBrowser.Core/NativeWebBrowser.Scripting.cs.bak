@@ -10,7 +10,7 @@ namespace Diga.NativeControls.WebBrowser
 {
     public partial class NativeWebBrowser
     {
-        private  RpcHandler _RpcHandler;
+        private RpcHandler _RpcHandler; 
 
         private const string JAVASCRIPT_CANNOT_BE_NULL_OR_EMPTY = "javaScript cannot be NULL or empty";
 
@@ -27,8 +27,8 @@ namespace Diga.NativeControls.WebBrowser
                 return;
 
             ScriptZeroTest(javaScript);
-            string cleanInnerText = Diga.WebView2.Scripting.Tools.JavaScriptEncoder.Encode(javaScript);
-            string scrptToExecute = $"window.external.executeScript(\"{{{cleanInnerText}}}\")";
+
+            string scrptToExecute = $"window.external.executeScript(\"{{{javaScript.Replace("\"", "\\'")}}}\")";
             this._WebViewControl.ExecuteScript(scrptToExecute);
         }
 
@@ -40,8 +40,7 @@ namespace Diga.NativeControls.WebBrowser
 
             ScriptZeroTest(javaScript);
 
-            string cleanInnerText = Diga.WebView2.Scripting.Tools.JavaScriptEncoder.Encode(javaScript);
-            string scriptToExecute = $"window.external.evalScript(\"{cleanInnerText}\")";
+            string scriptToExecute = $"window.external.evalScript(\"{javaScript.Replace("\"", "\\'")}\")";
             this._WebViewControl.ExecuteScript(scriptToExecute);
         }
 
@@ -50,8 +49,7 @@ namespace Diga.NativeControls.WebBrowser
             CheckIsCreatedOrEndedWithThrow();
             ScriptZeroTest(javaScript);
             CheckIsInUiThread();
-            string cleanInnerText = Diga.WebView2.Scripting.Tools.JavaScriptEncoder.Encode(javaScript);
-            string scriptToExecute = $"window.external.evalScript(\"{cleanInnerText}\")";
+            string scriptToExecute = $"window.external.evalScript(\"{javaScript.Replace("\"", "\\'")}\")";
             string result = UIDispatcher.UIThread.Invoke<string>(async () =>
             {
                 string rs = await this._WebViewControl.ExecuteScriptAsync(scriptToExecute);
@@ -79,8 +77,8 @@ namespace Diga.NativeControls.WebBrowser
         {
             CheckIsCreatedOrEndedWithThrow();
             ScriptZeroTest(javaScript);
-            string cleanInnerText = Diga.WebView2.Scripting.Tools.JavaScriptEncoder.Encode(javaScript);
-            string scriptToExecute = $"window.external.evalScript(\"{cleanInnerText}\")";
+
+            string scriptToExecute = $"window.external.evalScript(\"{javaScript.Replace("\"", "\\'")}\")";
             string result = await this._WebViewControl.ExecuteScriptAsync(scriptToExecute);
             ScriptErrorObject errObj = ScriptSerializationHelper.GetScriptErrorObject(result);
             if (errObj != null)
@@ -136,8 +134,8 @@ namespace Diga.NativeControls.WebBrowser
         {
             CheckIsCreatedOrEndedWithThrow();
             ScriptZeroTest(javaScript);
-            string cleanInnerText = Diga.WebView2.Scripting.Tools.JavaScriptEncoder.Encode(javaScript);
-            string scriptToExecute = $"window.external.executeScript(\"{{{cleanInnerText}}}\")";
+
+            string scriptToExecute = $"window.external.executeScript(\"{{{javaScript.Replace("\"", "\\'")}}}\")";
             string result = await this._WebViewControl.ExecuteScriptAsync(scriptToExecute);
             ScriptErrorObject errorObj = ScriptSerializationHelper.GetScriptErrorObject(result);
             if (errorObj != null)
@@ -153,9 +151,7 @@ namespace Diga.NativeControls.WebBrowser
             CheckIsCreatedOrEndedWithThrow();
             ScriptZeroTest(javaScript);
             CheckIsInUiThread();
-           
-            string cleanInnerText = Diga.WebView2.Scripting.Tools.JavaScriptEncoder.Encode(javaScript);
-            string scriptToExecute = $"window.external.executeScript(\"{{{cleanInnerText}}}\")";
+            string scriptToExecute = $"window.external.executeScript(\"{{{javaScript.Replace("\"", "\\'")}}}\")";
             string result = UIDispatcher.UIThread.Invoke<string>(async () =>
             {
                 string rs = await this._WebViewControl.ExecuteScriptAsync(scriptToExecute);

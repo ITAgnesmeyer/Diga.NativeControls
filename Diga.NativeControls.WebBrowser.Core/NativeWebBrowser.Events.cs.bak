@@ -9,8 +9,6 @@ using Diga.WebView2.Scripting;
 using Diga.WebView2.Scripting.DOM;
 using Diga.WebView2.Wrapper;
 using Diga.WebView2.Wrapper.EventArguments;
-using Diga.WebView2.Wrapper.Handler;
-
 
 namespace Diga.NativeControls.WebBrowser
 {
@@ -77,8 +75,6 @@ namespace Diga.NativeControls.WebBrowser
             }
         }
 
-        public event EventHandler<WebViewButtonDownEventArgs> MouseButtonDown; 
-        public event EventHandler<ContextMenuRequestedEventArgs> ContextMenuRequested;
         private void OnWebWindowBeforeCreate(object sender, BeforeCreateEventArgs e)
         {
             WebWindowInitSettings(e);
@@ -271,7 +267,7 @@ namespace Diga.NativeControls.WebBrowser
             {
                 try
                 {
-                    this._Window = this.GetDOMWindow();//.GetCopy();
+                    this._Window = this.GetDOMWindow().GetCopy();
                     this._Window.addEventListener("error", new DOMEventListenerScript(this._Window, "error"), true);
                     this._Window.DomEvent += OnDomEvent;
                     this.GetDOMConsole().log("Document_Loading");
@@ -551,7 +547,6 @@ namespace Diga.NativeControls.WebBrowser
             control.IsMutedChanged -= OnIsMutedChangedIntern;
             control.IsDocumentPlayingAudioChanged -= OnIsDocumentPlayingAudioChangedIntern;
             control.IsDefaultDownloadDialogOpenChanged -= OnIsDefaultDownloadDialogOpenChangedIntern;
-            control.ContextMenuRequested -= OnContextMenuRequestedIntern;
             _UnWireExecuted = true;
         }
 
@@ -594,12 +589,6 @@ namespace Diga.NativeControls.WebBrowser
             control.IsMutedChanged += OnIsMutedChangedIntern;
             control.IsDocumentPlayingAudioChanged += OnIsDocumentPlayingAudioChangedIntern;
             control.IsDefaultDownloadDialogOpenChanged += OnIsDefaultDownloadDialogOpenChangedIntern;
-            control.ContextMenuRequested += OnContextMenuRequestedIntern;
-        }
-
-        private void OnContextMenuRequestedIntern(object sender, ContextMenuRequestedEventArgs e)
-        {
-            OnContextMenuRequested(e);
         }
 
         private void OnIsDefaultDownloadDialogOpenChangedIntern(object sender, WebView2EventArgs e)
@@ -643,16 +632,6 @@ namespace Diga.NativeControls.WebBrowser
 
             });
 
-        }
-
-        protected virtual void OnMouseButtonDown(WebViewButtonDownEventArgs e)
-        {
-            MouseButtonDown?.Invoke(this, e);
-        }
-
-        protected virtual void OnContextMenuRequested(ContextMenuRequestedEventArgs e)
-        {
-            ContextMenuRequested?.Invoke(this, e);
         }
     }
 }

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net4.7.2;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>net4.7.2;net6.0;net7.0</TargetFrameworks>
     <RootNamespace>Diga.NativeControls.WebBrowser</RootNamespace>
     <PackageId>Diga.NativeControls.WebBrowser</PackageId>
     <Authors>Dipl.-Ing.(FH) Guido Agnesmeyer</Authors>
@@ -12,12 +12,13 @@
     <PackageReleaseNotes>WebBrowserControl build with WebView2 and CoreWindowsWrapper</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <AssemblyName>Diga.NativeControls.WebBrowser</AssemblyName>
-    <AssemblyVersion>1.0.23</AssemblyVersion>
-    <FileVersion>1.0.23</FileVersion>
+    <AssemblyVersion>1.1.23</AssemblyVersion>
+    <FileVersion>1.1.23</FileVersion>
     <PackageProjectUrl>https://github.com/ITAgnesmeyer/WebAssemblyViewer</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ITAgnesmeyer/Diga.NativeControls</RepositoryUrl>
-    <version>1.0.23</version>
+    <version>1.1.23</version>
     <PackageIcon>logo.png</PackageIcon>
+    <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
   </PropertyGroup>
 
 
@@ -28,12 +29,13 @@
 
   <ItemGroup>
     <PackageReference Include="CoreWindowsWrapper" Version="2.0.3" />
-    <PackageReference Include="Diga.Core.Api.Win32" Version="2.0.5" />
+    <PackageReference Include="Diga.Core.Api.Win32" Version="2.0.6" />
     <PackageReference Include="Diga.Core.Json" Version="1.0.2" />
-    <PackageReference Include="Diga.Core.Threading" Version="1.0.5" />
-    <PackageReference Include="Diga.WebView2.Scripting" Version="1.17.1" />
-    <PackageReference Include="Diga.WebView2.Wrapper" Version="17.0.1" />
+    <PackageReference Include="Diga.Core.Threading" Version="1.0.6" />
+    <PackageReference Include="Diga.WebView2.Scripting" Version="1.20.2" />
+    <PackageReference Include="Diga.WebView2.Wrapper" Version="20.1.0" />
     <PackageReference Include="MimeTypeExtension" Version="1.0.28" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
 
 </Project>
