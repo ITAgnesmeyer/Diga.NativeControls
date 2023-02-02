@@ -22,6 +22,16 @@ namespace Diga.NativeControls.WebBrowser
                 return retImage;
             }
         }
+
+        public async Task<Image> GetFavIconAsImageAsync(ImageFormat imageFormat)
+        {
+            using (var stream = new MemoryStream())
+            {
+                await this._WebViewControl.GetFavIconAsync(stream, imageFormat);
+                var retImage = Image.FromStream(stream);
+                return retImage;
+            }
+        }
         public void Navigate(string url)
         {
             this._Url = url;
@@ -114,10 +124,10 @@ namespace Diga.NativeControls.WebBrowser
 
         }
 
-        //public void PrintToPdf(string file, WebView2PrintSettings printerSettings)
-        //{
-        //    this._WebViewControl.PrintPdf(file, printerSettings);
-        //}
+        public void PrintToPdf(string file, ICoreWebView2PrintSettings printerSettings)
+        {
+            this._WebViewControl.PrintPdf(file, printerSettings);
+        }
         public async Task<bool> PrintToPdfAsync(string file, WebView2PrintSettings printSettings)
         {
             CheckIsCreatedOrEndedWithThrow();

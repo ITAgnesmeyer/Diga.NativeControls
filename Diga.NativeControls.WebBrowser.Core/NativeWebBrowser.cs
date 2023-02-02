@@ -176,7 +176,7 @@ namespace Diga.NativeControls.WebBrowser
             this.DoDock();
         }
 
-
+        private UIDispatcher UIDispatcher => UIDispatcher.UIThread;
 
 
     }

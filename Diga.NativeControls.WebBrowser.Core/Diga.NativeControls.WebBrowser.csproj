@@ -6,17 +6,17 @@
     <PackageId>Diga.NativeControls.WebBrowser</PackageId>
     <Authors>Dipl.-Ing.(FH) Guido Agnesmeyer</Authors>
     <Description>Diga.NativeControls.WebBrowser.Core</Description>
-    <Copyright>Copyright © 2022 Dipl.-Ing.(FH) Guido Agnesmeyer</Copyright>
+    <Copyright>Copyright © 2023 Dipl.-Ing.(FH) Guido Agnesmeyer</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>net-core;WebView2;CoreWindowsWrapper</PackageTags>
     <PackageReleaseNotes>WebBrowserControl build with WebView2 and CoreWindowsWrapper</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <AssemblyName>Diga.NativeControls.WebBrowser</AssemblyName>
-    <AssemblyVersion>1.1.23</AssemblyVersion>
-    <FileVersion>1.1.23</FileVersion>
+    <AssemblyVersion>1.1.24</AssemblyVersion>
+    <FileVersion>1.1.24</FileVersion>
     <PackageProjectUrl>https://github.com/ITAgnesmeyer/WebAssemblyViewer</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ITAgnesmeyer/Diga.NativeControls</RepositoryUrl>
-    <version>1.1.23</version>
+    <version>1.1.24</version>
     <PackageIcon>logo.png</PackageIcon>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
   </PropertyGroup>
@@ -32,9 +32,9 @@
     <PackageReference Include="Diga.Core.Api.Win32" Version="2.0.6" />
     <PackageReference Include="Diga.Core.Json" Version="1.0.2" />
     <PackageReference Include="Diga.Core.Threading" Version="1.0.6" />
-    <PackageReference Include="Diga.WebView2.Scripting" Version="1.20.2" />
-    <PackageReference Include="Diga.WebView2.Wrapper" Version="20.1.0" />
-    <PackageReference Include="MimeTypeExtension" Version="1.0.28" />
+    <PackageReference Include="Diga.WebView2.Scripting" Version="1.20.3" />
+    <PackageReference Include="Diga.WebView2.Wrapper" Version="20.1.1" />
+    <PackageReference Include="MimeTypeExtension" Version="1.0.29" />
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
 

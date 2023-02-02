@@ -229,7 +229,7 @@ namespace Diga.NativeControls.WebBrowser
                
                 html = System.Text.RegularExpressions.Regex.Unescape(html);
                 //string enc = html= System.Text.RegularExpressions.Regex.Escape(html);
-                html = html.Replace("\n", Environment.NewLine);
+                html = html.Replace("\n", System.Environment.NewLine);
                 return html;
             }
             catch (Exception e)
