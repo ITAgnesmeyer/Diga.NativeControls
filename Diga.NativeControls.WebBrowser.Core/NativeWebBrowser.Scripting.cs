@@ -10,7 +10,7 @@ namespace Diga.NativeControls.WebBrowser
 {
     public partial class NativeWebBrowser
     {
-        private  RpcHandler _RpcHandler;
+        private RpcHandler _RpcHandler;
 
         private const string JAVASCRIPT_CANNOT_BE_NULL_OR_EMPTY = "javaScript cannot be NULL or empty";
 

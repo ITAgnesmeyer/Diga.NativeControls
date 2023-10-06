@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.Threading.Tasks;
+using Diga.WebView2.Interop;
 using Diga.WebView2.Wrapper;
 using Diga.WebView2.Wrapper.Types;
 
@@ -7,7 +10,7 @@ namespace Diga.NativeControls.WebBrowser
 {
     public partial class NativeWebBrowser
     {
-        private bool _DefaultContextMenusEnabled = true;
+        private bool _DefaultContextMenusEnabled;
         private string _Url;
 
         private bool _DefaultScriptDialogsEnabled = true;
@@ -19,29 +22,149 @@ namespace Diga.NativeControls.WebBrowser
         private bool _IsScriptEnabled = true;
         private bool _IsStatusBarEnabled;
         private bool _IsWebMessageEnabled = true;
-
         private bool _AreBrowserAcceleratorKeysEnabled = true;
-        private bool _IsGeneralAutoFillEnabled = true;
-        private bool _IsPasswordAutosaveEnabled = true;
+        private bool _IsGeneralAutoFillEnabled;
+        private bool _IsPasswordAutosaveEnabled;
+
         private string _HtmlContent;
         private double _ZoomFactor;
-
         public bool AutoDock { get; set; } = false;
         public string BrowserExecutableFolder { get; set; } = "";
         public string BrowserUserDataFolder { get; set; } = "";
         public string BrowserAdditionArgs { get; set; } = "";
-        public string MonitoringFolder { get; set; } = "";
-        public string MonitoringUrl { get; set; } = "";
-        public bool EnableMonitoring { get; set; } = false;
-
 
         private Color _DefaultBackgroundColor = Color.Empty;
 
+        private SchemeRegistration[] _SchemeRegistrations;
 
+        #region Public Properties
+        private string _MonitoringFolder;
+        //[Editor(typeof(FolderNameEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        public string MonitoringFolder
+        {
+            get
+            {
+                return _MonitoringFolder;
+            }
+            set
+            {
+                _MonitoringFolder = value;
+                this._MonitoringActionList.FileMonitoring.SetMonitoringFolder(_MonitoringFolder);
+            }
+        }
+        private string _MonitoringUrl;
+        public string MonitoringUrl
+        {
+            get
+            {
+                return _MonitoringUrl;
+            }
+            set
+            {
+                _MonitoringUrl = value;
+
+                this._MonitoringActionList.FileMonitoring.SetMonitoringUrl(_MonitoringUrl);
+            }
+        }
+
+        private bool _EnableMonitoring;
+        public bool EnableMonitoring
+        {
+            get
+            {
+                return this._EnableMonitoring;
+
+            }
+            set
+            {
+                this._EnableMonitoring = value;
+                this._MonitoringActionList.FileMonitoring.SetIsEnabled(value);
+            }
+        }
+
+        private bool _EnableCgi;
+        public bool EnableCgi
+        {
+            get
+            {
+                return this._EnableCgi;
+            }
+            set
+            {
+                this._EnableCgi = value;
+                this._MonitoringActionList.CgiMointoring.SetIsEnabled(value);
+            }
+        }
+
+        private string _CgiMonitoringUrl;
+        public string CgiMoitoringUrl
+        {
+            get
+            {
+                return this._CgiMonitoringUrl;
+            }
+            set
+            {
+                this._CgiMonitoringUrl = value;
+                this._MonitoringActionList.CgiMointoring.SetMonitoringUrl(value);
+            }
+        }
+
+        private string _CgiMoitoringFolder;
+        //[Editor(typeof(FolderNameEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        public string CgiMoitoringFolder
+        {
+            get
+            {
+                return _CgiMoitoringFolder;
+            }
+            set
+            {
+                this._CgiMoitoringFolder = value;
+                this._MonitoringActionList.CgiMointoring.SetMonitoringFolder(value);
+            }
+        }
+
+        private string[] _CgiFileExtensions;
+
+        public string[] CgiFileExtensions
+        {
+            get
+            {
+                return this._CgiFileExtensions;
+            }
+            set
+            {
+                this._CgiFileExtensions = value;
+                this._MonitoringActionList.CgiMointoring.SetCgiExtionsions(value);
+
+            }
+        }
+        private string _CgiExeFile;
+        //[Editor(typeof(ExeSelectFileNameEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        public string CgiExeFile
+        {
+            get
+            {
+                return this._CgiExeFile;
+            }
+            set
+            {
+                this._CgiExeFile = value;
+                this._MonitoringActionList.CgiMointoring.SetCgiExeFile(value);
+            }
+        }
         public string Url
         {
             get => this._Url;
-            set => this._Url = value;
+            set
+            {
+                this._Url = value;
+                if (this.CheckIsCreatedOrEnded)
+                {
+                    Navigate(value);
+                }
+            }
         }
 
         public List<string> Content
@@ -69,40 +192,32 @@ namespace Diga.NativeControls.WebBrowser
                     this._DefaultBackgroundColor = this._WebViewControl.DefaultBackgroundColor;
                 }
 
-                return _DefaultBackgroundColor;
+                return this._DefaultBackgroundColor;
             }
             set
             {
-                _DefaultBackgroundColor = value;
+                this._DefaultBackgroundColor = value;
                 if (this.CheckIsCreatedOrEnded)
                 {
-                    this._WebViewControl.DefaultBackgroundColor = _DefaultBackgroundColor;
+                    this._WebViewControl.DefaultBackgroundColor = this._DefaultBackgroundColor;
                 }
-
             }
 
         }
 
+        public Task<string> PageSource => GetDocumentTextAsync();
+
+        [Browsable(false)]
         public string DocumentTitle
         {
-            get
-            {
-                if (this.CheckIsCreatedOrEnded)
-                    return this._WebViewControl.DocumentTitle;
-                return "";
-            }
+            get => this._WebViewControl.DocumentTitle;
         }
 
 
         public string HtmlContent
         {
             get => this._HtmlContent;
-            set
-            {
-
-                this.NavigateToString(value);
-
-            }
+            set => NavigateToString(value);
         }
 
         public bool IsZoomControlEnabled
@@ -227,8 +342,9 @@ namespace Diga.NativeControls.WebBrowser
             }
         }
 
-        public bool IsCreated { get; set; }
-        public bool IsBrowserEnded { get; private set; } = false;
+        [Browsable(false)] public bool IsCreated { get; private set; }
+
+        [Browsable(false)] public bool IsBrowserEnded { get; private set; }
 
         public bool DevToolsEnabled
         {
@@ -319,6 +435,12 @@ namespace Diga.NativeControls.WebBrowser
         public WebView2Environment Environment => this._WebViewControl.Environment;
         public WebView2View WebView2 => this._WebViewControl.WebView;
 
+        public SchemeRegistration[] SchemeRegistrations
+        {
+            get => this._SchemeRegistrations;
+            set => this._SchemeRegistrations = value;
+        }
+
         public bool CanGoBack
         {
             get
@@ -338,7 +460,6 @@ namespace Diga.NativeControls.WebBrowser
                 return false;
             }
         }
-
-
+        #endregion
     }
 }
